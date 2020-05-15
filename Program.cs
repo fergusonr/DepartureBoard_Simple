@@ -14,7 +14,7 @@ using LDB;
 
 namespace DepartureBoard
 {
-	class DepartureBoard : Window		
+	class DepartureBoard : Window
 	{
 		internal DepartureBoard(string title) : base(title){}
 		public override bool ProcessKey(KeyEvent keyEvent)
@@ -97,7 +97,6 @@ namespace DepartureBoard
 #if !TEST
 			// token from command line?
 			var token = args.Length == 1 ? args [0] : null;
-			token = args.Length == 3 ? args [2] : null;
 
 			// appsetting
 			var config = new ConfigurationBuilder().AddJsonFile("appSettings.json").Build();
