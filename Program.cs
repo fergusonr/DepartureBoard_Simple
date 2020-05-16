@@ -22,8 +22,7 @@ namespace DepartureBoard
 			if (keyEvent.Key == Key.F5)
 				Program.GetBoard();
 
-			base.ProcessKey(keyEvent);
-			return true;
+			return base.ProcessKey(keyEvent);
 		}
 	}
 
@@ -44,10 +43,10 @@ namespace DepartureBoard
 		#region Handlers
 		static void New()
 		{
-			if ((_fromStationCode = SelectStation("From station")) == null)
+			if ((_fromStationCode = SelectStation("From station")) == string.Empty)
 				return;
 
-			if ((_toStationCode = SelectStation("To station")) == null)
+			if ((_toStationCode = SelectStation("To station")) == string.Empty)
 				return;
 
 			GetBoard();
@@ -63,10 +62,13 @@ namespace DepartureBoard
 			var dialog = new Dialog(title, 40, 12) { stationSearch };
 			Application.Run(dialog);
 
-			if (stationSearch.Text == "" || stationSearch.Text == all)
+			if (stationSearch.Text == all)
 				return null;
 
-			return _stationList[stationSearch.Text.ToString()];
+			if (stationSearch.Text == string.Empty)
+				return string.Empty;
+
+			return _stationList [stationSearch.Text.ToString()];
 		}
 
 		static void About()
@@ -132,7 +134,7 @@ namespace DepartureBoard
 				}),				
 				new MenuBarItem ("_Options", new MenuItem []
 				{
-					new MenuItem ("_Refresh", "", () => {  GetBoard(); }),					
+					new MenuItem ("_Refresh", "", () => {  GetBoard(); }),
 					new MenuItem ("_Switch", "", () => {  Switch(); })
 
 				}),
