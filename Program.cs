@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Reflection;
@@ -9,92 +8,34 @@ using System.ServiceModel.Channels;
 using System.Collections.Generic;
 using Terminal.Gui;
 using NStack;
-using Mono.Terminal;
 using LDB;
 
 namespace DepartureBoard
 {
-	class DepartureBoard : Window
-	{
-		internal DepartureBoard(string title) : base(title){}
-		public override bool ProcessKey(KeyEvent keyEvent)
-		{
-			if (keyEvent.Key == Key.F5)
-				Program.GetBoard();
-
-			return base.ProcessKey(keyEvent);
-		}
-	}
-
-	class Program
+	static class Program
 	{
 		static readonly LDBServiceSoapClient _client = new LDBServiceSoapClient(LDBServiceSoapClient.EndpointConfiguration.LDBServiceSoap12);
 		static readonly AccessToken _token = new AccessToken();
 
 		static Dictionary<string, string> _stationList = new Dictionary<string, string>();
-		static DepartureBoard _mainWindow;
+		static Window _mainWindow;
+		static MenuBar _menuBar;
 		static List<string> _rsids;
 		static ListView _displayBoard;
 		static ListView _displayDetails;
 		static ListView _displayMessages;
 		static string _fromStationCode;
 		static string _toStationCode;
-
-		#region Handlers
-		static void New()
-		{
-			if ((_fromStationCode = SelectStation("From station")) == string.Empty)
-				return;
-
-			if ((_toStationCode = SelectStation("To station")) == string.Empty)
-				return;
-
-			GetBoard();
-		}
-
-		static string SelectStation(string title)
-		{
-			const string all = "<All destinations>";
-
-			var list = title.StartsWith("To ") ? _stationList.Keys.Prepend(all).ToList() : _stationList.Keys.ToList();
-			var stationSearch = new TextFieldAutoComplete(0, 0, 36, 7, list);
-			stationSearch.Changed += (object sender, ustring s) => { Application.RequestStop(); };
-			var dialog = new Dialog(title, 40, 12) { stationSearch };
-			Application.Run(dialog);
-
-			if (stationSearch.Text == all)
-				return null;
-
-			if (stationSearch.Text == string.Empty)
-				return string.Empty;
-
-			return _stationList [stationSearch.Text.ToString()];
-		}
-
-		static void About()
-		{
-			var d = new Dialog("About", 36, 10, new Button("Ok", is_default: true) { Clicked = () => { Application.RequestStop(); } })
-			{
-				new Label(new Rect(0, 1, 32, 1), $"Live DepartureBoard") { TextAlignment = TextAlignment.Centered },
-				new Label(new Rect(0, 2, 32, 1), $"Version {Assembly.GetEntryAssembly().GetName().Version}") { TextAlignment = TextAlignment.Centered },
-				new Label(new Rect(0, 3, 32, 1), $"{Environment.OSVersion.VersionString}") { TextAlignment = TextAlignment.Centered }
-			};
-
-			Application.Run(d);
-		}
-
-		static bool Quit()
-		{
-			return MessageBox.Query(50, 7, "Quit?", "Are you sure you want to quit?", "Yes", "No") == 0;
-		}
-		#endregion
+		static string _allDestinations = "all destinations";
+		static MenuItem _switchMenu;
+		static MenuItem _allDestinationMenu;
+		static ColorScheme _currentColourScheme = Colors.Base;
 
 		static void Main(string[] args)
 		{
 			// Init Terminal.Gui
 			Application.Init();
 			Application.MainLoop.AddTimeout(TimeSpan.FromMinutes(5), Refresh);
-			var top = Application.Top;
 
 #if !TEST
 			// token from command line?
@@ -102,7 +43,7 @@ namespace DepartureBoard
 
 			// appsetting
 			var config = new ConfigurationBuilder().AddJsonFile("appSettings.json").Build();
-			_token.TokenValue =  token ?? config["token"] ?? "Null";
+			_token.TokenValue = token ?? config["token"] ?? "Null";
 
 			if (!Guid.TryParse(_token.TokenValue, out Guid dummy))
 			{
@@ -111,9 +52,8 @@ namespace DepartureBoard
 			}
 #endif
 			// station list
-			var file = File.ReadAllLines(@"station_codes.csv");
+			var file = File.ReadAllLines("station_codes.csv");
 			_stationList = file.ToDictionary(k => k.Split(',')[0], v => v.Split(',')[1]);
-
 
 			// Web proxy https://github.com/dotnet/wcf/issues/3311
 			if (_client.Endpoint.Binding is CustomBinding custom)
@@ -122,43 +62,57 @@ namespace DepartureBoard
 				binding.UseDefaultWebProxy = true;
 			}
 
-			_mainWindow = new DepartureBoard("Departures") { X = 0,	Y = 1, Width = Dim.Fill(), Height = Dim.Fill()};
-
 			// menu bar
-			var menu = new MenuBar(new MenuBarItem[]
+			_menuBar = new MenuBar(new MenuBarItem[]
 			{
 				new MenuBarItem ("_File", new MenuItem []
 				{
-					new MenuItem ("_New", "", () => { New(); }),
-					new MenuItem ("_Quit", "", () => { if (Quit()) top.Running = false; })
-				}),				
+					new MenuItem ("_New", "", New),
+					new MenuItem ("_Quit", "", () => { if (Quit()) Application.Top.Running = false; })
+				}),
 				new MenuBarItem ("_Options", new MenuItem []
 				{
-					new MenuItem ("_Refresh", "", () => {  GetBoard(); }),
-					new MenuItem ("_Switch", "", () => {  Switch(); })
-
+					new MenuItem ("_Refresh", "", GetBoard),
+					new MenuBarItem ("_Switch", new MenuItem[]
+					{
+						_switchMenu = new MenuItem ("#swap#", "", Switch),
+						_allDestinationMenu = new MenuItem ("#alldest#", "", AllDestinations)
+					}),
+					new MenuBarItem ("Co_lour", new MenuItem[]
+					{
+						new MenuItem ("Standard", "", ColourStandard),
+						new MenuItem ("Black/Yellow", "", () => SetColorScheme(Color.Black, Color.BrightYellow)),
+						new MenuItem ("Black/Green", "", () => SetColorScheme(Color.Black, Color.BrightGreen)),
+					})
 				}),
 				new MenuBarItem ("_Help", new MenuItem []
 				{
-					new MenuItem ("_About", "", () => { About(); })
+					new MenuItem ("_About", "", About)
 				})
 			});
 
-			top.Add(_mainWindow);
-			top.Add(menu);
+			// main window
+			_mainWindow = new Window("Departures") { X = 0,	Y = Pos.Bottom(_menuBar), Width = Dim.Fill(), Height = Dim.Fill()};
+			_mainWindow.KeyDown += (View.KeyEventEventArgs e) =>
+			{
+				if (e.KeyEvent.Key == Key.F5)
+					GetBoard();
+
+			};
+			Application.Top.Add(_menuBar, _mainWindow);
 
 			// Main board
-			_displayBoard = new ListView(new List<string>()) { X = 0, Y = 0, Width = Dim.Fill(), Height = Dim.Percent(50) };
-			_displayBoard.SelectedChanged += GetDetilsBoard;
+			_displayBoard = new ListView() { X = 0, Y = 0, Width = Dim.Fill(), Height = Dim.Percent(50) };
+			_displayBoard.SelectedItemChanged += GetDetialsBoard;
 			_mainWindow.Add(_displayBoard);
 
 			// Details board
-			_displayDetails = new ListView(new List<string>()) { X = 0, Y = 11, Width = Dim.Fill(), Height = Dim.Percent(50) };
+			_displayDetails = new ListView() { X = 0, Y = Pos.Bottom(_displayBoard), Width = Dim.Fill(), Height = Dim.Percent(25) };
 			_mainWindow.Add(_displayDetails);
 
 			// messages
 			var viewMessage = new FrameView("Messages") { X = 0, Y = Pos.Bottom(_mainWindow)-8, Width = Dim.Fill(), Height = 5 };
-			_displayMessages = new ListView();
+			_displayMessages = new ListView() { X = 0, Y = 0, Width = Dim.Fill(), Height = Dim.Fill() };
 			viewMessage.Add(_displayMessages);
 			_mainWindow.Add(viewMessage);
 
@@ -180,6 +134,77 @@ namespace DepartureBoard
 				Application.MainLoop.Invoke(New);
 
 			Application.Run();
+			Application.Shutdown();
+		}
+
+		static void New()
+		{
+			if ((_fromStationCode = SelectStation("From station")) == string.Empty)
+				return;
+
+			if ((_toStationCode = SelectStation("To station")) == string.Empty)
+				return;
+
+			GetBoard();
+		}
+
+		static string SelectStation(string title)
+		{
+			string all = $"<{_allDestinations}>";
+
+			var list = title.StartsWith("To ") ? _stationList.Keys.Prepend(all).Select(x => ustring.Make(x)).ToList() : _stationList.Keys.Select(x => ustring.Make(x)).ToList();
+
+			var stationSearch = new ComboBox() { Width = Dim.Fill(), Height = Dim.Fill() };
+			stationSearch.SetSource(list);
+			stationSearch.OpenSelectedItem += (ListViewItemEventArgs s) => { Application.RequestStop(); };
+			var dialog = new Dialog() { Title = title, Width = Dim.Percent(40), Height = Dim.Percent(50), ColorScheme = _currentColourScheme };
+			dialog.Add(stationSearch);
+			Application.Run(dialog);
+
+			if (stationSearch.Text == all)
+				return null;
+
+			if (stationSearch.Text == string.Empty)
+				return string.Empty;
+
+			return _stationList[stationSearch.Text.ToString()];
+		}
+
+		static void Switch()
+		{
+			if (_toStationCode == null) // cannot switch to from "All Destiations"
+				return;
+
+			var temp = _fromStationCode;
+			_fromStationCode = _toStationCode;
+			_toStationCode = temp;
+			GetBoard();
+		}
+
+		private static void AllDestinations()
+		{
+			_toStationCode = null;
+			GetBoard();
+		}
+
+		static void About()
+		{
+			var ok = new Button("Ok", is_default: true) { ColorScheme = _currentColourScheme };
+			ok.Clicked += Application.RequestStop;
+
+			var d = new Dialog("About", 36, 10, ok)
+			{
+				new Label($"Live DepartureBoard") { X = 0, Y = 1, Width = Dim.Fill(), TextAlignment = TextAlignment.Centered },
+				new Label($"Version {Assembly.GetEntryAssembly().GetName().Version}") { X = 0, Y = 2, Width = Dim.Fill(), TextAlignment = TextAlignment.Centered },
+				new Label($"{Environment.OSVersion.VersionString}") { X = 0, Y = 3, Width = Dim.Fill(), TextAlignment = TextAlignment.Centered }
+			};
+
+			Application.Run(d);
+		}
+
+		static bool Quit()
+		{
+			return MessageBox.Query(50, 7, "Quit?", "Are you sure you want to quit?", "Yes", "No") == 0;
 		}
 
 		static bool Refresh(MainLoop arg)
@@ -188,11 +213,33 @@ namespace DepartureBoard
 			return true; // keep ticking
 		}
 
+		private static void ColourStandard()
+		{
+			_currentColourScheme = _menuBar.ColorScheme = _mainWindow.ColorScheme = Colors.Base;
+			_mainWindow.SetNeedsDisplay();
+			_menuBar.SetNeedsDisplay();
+		}
+
+		private static void SetColorScheme(Color back, Color fore)
+		{
+			var colour = Application.Driver.MakeAttribute(fore, back);
+			_currentColourScheme = _menuBar.ColorScheme = _mainWindow.ColorScheme = new ColorScheme()
+			{
+				Normal = colour,
+				HotNormal = colour,
+				Focus = Application.Driver.MakeAttribute(fore, Color.DarkGray)
+			};
+			_mainWindow.SetNeedsDisplay();
+			_menuBar.SetNeedsDisplay();
+		}
+
 		internal static void GetBoard()
 		{
+			// Cannot use listview.Clear();
 			_displayBoard.SetSource(new List<string>());
 			_displayDetails.SetSource(new List<string>());
 			_displayMessages.SetSource(new List<string>());
+			_displayBoard.SetFocus();
 			_rsids?.Clear();
 
 #if TEST
@@ -200,7 +247,7 @@ namespace DepartureBoard
 			{
 				locationName = _stationList.First(x => x.Value == _fromStationCode).Key,
 				filterType = FilterType.to,
-				filterLocationName = _stationList.First(x => x.Value == _toStationCode).Key,
+				filterLocationName = _stationList.FirstOrDefault(x => x.Value == _toStationCode).Key,
 				trainServices = new ServiceItem1[10],
 				nrccMessages = new NRCCMessage[] { new NRCCMessage { Value = "Blackheath toilets out of order" } }
 			};
@@ -208,7 +255,7 @@ namespace DepartureBoard
 			for (int i = 0; i < board.trainServices.Length; i++)
 			{
 				board.trainServices[i] = new ServiceItem1 
-				{ 
+				{
 					std = time.ToString("hh:mm"), 
 					destination = new ServiceLocation[] { new ServiceLocation { locationName = board.filterLocationName } }, 
 					platform = "1", 
@@ -232,7 +279,15 @@ namespace DepartureBoard
 
 			var board = task.Result.GetStationBoardResult;
 #endif
-			_mainWindow.Title = $"{board.locationName} {board.filterType} {board.filterLocationName ?? "all destinations"}";
+			_mainWindow.Title = $"{board.locationName} {board.filterType} {board.filterLocationName ?? _allDestinations}";
+
+			_switchMenu.Title = $"{board.filterLocationName ?? _allDestinations} -> {board.locationName}";
+			_allDestinationMenu.Title = $"{board.locationName} -> {_allDestinations}";
+
+			bool switchMenuEnabled() { return board.filterLocationName != null; }
+
+			_switchMenu.CanExecute = switchMenuEnabled;
+			_allDestinationMenu.CanExecute = switchMenuEnabled;
 
 			if (board.trainServices == null)
 				return;
@@ -243,17 +298,18 @@ namespace DepartureBoard
 			if (board.nrccMessages == null)
 				return;
 
-			_displayMessages.SetSource(board.nrccMessages.Select(x => HttpUtility.HtmlDecode(x.Value)).ToList());
+			_displayMessages.SetSource(board.nrccMessages.Select(x => HttpUtility.HtmlDecode( x.Value)).ToList());
 		}
 
-		static void GetDetilsBoard()
+		static void GetDetialsBoard(ListViewItemEventArgs args)
 		{
+			if (_rsids == null) // fired before GetBoard called
+				return;
+
 			var serviceId = _rsids[_displayBoard.SelectedItem];
 
 			if (serviceId == null)
 				return;
-
-			_displayDetails.SetSource(new List<string>());
 
 #if TEST
 			var details = new ServiceDetails
@@ -299,13 +355,5 @@ namespace DepartureBoard
 			return data;
 		}
 #endif
-
-		static void Switch()
-		{
-			var temp = _fromStationCode;
-			_fromStationCode = _toStationCode;
-			_toStationCode = temp;
-			GetBoard();
-		}
 	}
 }

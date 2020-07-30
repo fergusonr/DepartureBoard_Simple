@@ -1,6 +1,9 @@
 ﻿
-**.NET Core DepartureBoard**
+# .NET Core Departure board
 
-Simple demonstration of Network rails live departure board service. Runs on both Windows and Linux.
+Simple demonstration of National Rail's live departure board web service. 
+Runs on Windows, Mac and Linux
 
-![DepartureBoard](/image.png)
+http://lite.realtime.nationalrail.co.uk/openldbws
+
+![DepartureBoard](docs/image.png)
