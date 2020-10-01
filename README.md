@@ -6,4 +6,4 @@ Runs on Windows, Mac and Linux
 
 http://lite.realtime.nationalrail.co.uk/openldbws
 
-![DepartureBoard](docs/image.png)
+![DepartureBoard](Docs/image.png)

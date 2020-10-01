@@ -26,7 +26,7 @@ namespace DepartureBoard
 		static ListView _displayMessages;
 		static string _fromStationCode;
 		static string _toStationCode;
-		static string _allDestinations = "all destinations";
+		const string _allDestinations = "all destinations";
 		static MenuItem _switchMenu;
 		static MenuItem _allDestinationMenu;
 		static ColorScheme _currentColourScheme = Colors.Base;
@@ -39,7 +39,7 @@ namespace DepartureBoard
 
 #if !TEST
 			// token from command line?
-			var token = args.Length == 1 ? args [0] : null;
+			var token = args.Length == 1 || args.Length == 3 ? args [^1] : null;
 
 			// appsetting
 			var config = new ConfigurationBuilder().AddJsonFile("appSettings.json").Build();
@@ -48,6 +48,7 @@ namespace DepartureBoard
 			if (!Guid.TryParse(_token.TokenValue, out Guid dummy))
 			{
 				MessageBox.ErrorQuery(80, 7, "Error", $"Invalid token:- {_token.TokenValue}", "Quit");
+				Application.Shutdown();
 				return;
 			}
 #endif
@@ -125,6 +126,7 @@ namespace DepartureBoard
 				if(!_stationList.ContainsValue(_fromStationCode) || !_stationList.ContainsValue(_toStationCode))
 				{
 					MessageBox.ErrorQuery(80, 7, "Error", $"Invalid station code:- {_fromStationCode} {_toStationCode}");
+					Application.Shutdown();
 					return;
 				}
 				else
@@ -156,7 +158,7 @@ namespace DepartureBoard
 
 			var stationSearch = new ComboBox() { Width = Dim.Fill(), Height = Dim.Fill() };
 			stationSearch.SetSource(list);
-			stationSearch.OpenSelectedItem += (ListViewItemEventArgs s) => { Application.RequestStop(); };
+			stationSearch.OpenSelectedItem += (ListViewItemEventArgs _) => Application.RequestStop();
 			var dialog = new Dialog() { Title = title, Width = Dim.Percent(40), Height = Dim.Percent(50), ColorScheme = _currentColourScheme };
 			dialog.Add(stationSearch);
 			Application.Run(dialog);
@@ -192,12 +194,12 @@ namespace DepartureBoard
 			var ok = new Button("Ok", is_default: true) { ColorScheme = _currentColourScheme };
 			ok.Clicked += Application.RequestStop;
 
-			var d = new Dialog("About", 36, 10, ok)
-			{
+			var d = new Dialog("About", 36, 10, ok);
+			d.Add(
 				new Label($"Live DepartureBoard") { X = 0, Y = 1, Width = Dim.Fill(), TextAlignment = TextAlignment.Centered },
 				new Label($"Version {Assembly.GetEntryAssembly().GetName().Version}") { X = 0, Y = 2, Width = Dim.Fill(), TextAlignment = TextAlignment.Centered },
 				new Label($"{Environment.OSVersion.VersionString}") { X = 0, Y = 3, Width = Dim.Fill(), TextAlignment = TextAlignment.Centered }
-			};
+			);
 
 			Application.Run(d);
 		}
