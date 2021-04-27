@@ -112,9 +112,10 @@ namespace DepartureBoard
 			_mainWindow.Add(_displayDetails);
 
 			// messages
-			var viewMessage = new FrameView("Messages") { X = 0, Y = Pos.Bottom(_mainWindow)-8, Width = Dim.Fill(), Height = 5 };
+			var viewMessage = new FrameView("Messages") { X = 0, Y = Pos.Bottom(_displayDetails)+1, Width = Dim.Fill(), Height = Dim.Fill() };
 			_displayMessages = new ListView() { X = 0, Y = 0, Width = Dim.Fill(), Height = Dim.Fill() };
 			viewMessage.Add(_displayMessages);
+			viewMessage.TabStop = false; // needs to happen after control added?!?
 			_mainWindow.Add(viewMessage);
 
 			// Run
