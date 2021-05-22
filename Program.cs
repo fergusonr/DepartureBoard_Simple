@@ -160,6 +160,7 @@ namespace DepartureBoard
 			var stationSearch = new ComboBox() { Width = Dim.Fill(), Height = Dim.Fill() };
 			stationSearch.SetSource(list);
 			stationSearch.OpenSelectedItem += (ListViewItemEventArgs _) => Application.RequestStop();
+
 			var dialog = new Dialog() { Title = title, Width = Dim.Percent(40), Height = Dim.Percent(50), ColorScheme = _currentColourScheme };
 			dialog.Add(stationSearch);
 			Application.Run(dialog);
@@ -193,7 +194,7 @@ namespace DepartureBoard
 		static void About()
 		{
 			var ok = new Button("Ok", is_default: true) { ColorScheme = _currentColourScheme };
-			ok.Clicked += Application.RequestStop;
+			ok.Clicked += () => Application.RequestStop(); 
 
 			var d = new Dialog("About", 36, 10, ok);
 			d.Add(
