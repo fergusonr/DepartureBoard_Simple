@@ -30,6 +30,7 @@ namespace DepartureBoard
 		static MenuItem _switchMenu;
 		static MenuItem _allDestinationMenu;
 		static ColorScheme _currentColourScheme = Colors.Base;
+		static Border _border = new Border() { Effect3D = false, BorderStyle = BorderStyle.Single };
 
 		static void Main(string[] args)
 		{
@@ -145,6 +146,8 @@ namespace DepartureBoard
 			if ((_fromStationCode = SelectStation("From station")) == string.Empty)
 				return;
 
+			_displayBoard.SetFocus();
+
 			if ((_toStationCode = SelectStation("To station")) == string.Empty)
 				return;
 
@@ -162,6 +165,7 @@ namespace DepartureBoard
 			stationSearch.OpenSelectedItem += (ListViewItemEventArgs _) => Application.RequestStop();
 
 			var dialog = new Dialog() { Title = title, Width = Dim.Percent(40), Height = Dim.Percent(50), ColorScheme = _currentColourScheme };
+			dialog.Border = _border;
 			dialog.Add(stationSearch);
 			Application.Run(dialog);
 
@@ -197,6 +201,7 @@ namespace DepartureBoard
 			ok.Clicked += () => Application.RequestStop(); 
 
 			var d = new Dialog("About", 36, 10, ok);
+			d.Border = _border;
 			d.Add(
 				new Label($"Live DepartureBoard") { X = 0, Y = 1, Width = Dim.Fill(), TextAlignment = TextAlignment.Centered },
 				new Label($"Version {Assembly.GetEntryAssembly().GetName().Version}") { X = 0, Y = 2, Width = Dim.Fill(), TextAlignment = TextAlignment.Centered },
@@ -208,7 +213,7 @@ namespace DepartureBoard
 
 		static bool Quit()
 		{
-			return MessageBox.Query(50, 7, "Quit?", "Are you sure you want to quit?", "Yes", "No") == 0;
+			return MessageBox.Query(50, 7, "Quit?", "Are you sure you want to quit?", 0, _border, "Yes", "No") == 0;
 		}
 
 		static bool Refresh(MainLoop arg)
