@@ -312,7 +312,7 @@ namespace DepartureBoard
 
 		static void GetDetialsBoard(ListViewItemEventArgs args)
 		{
-			if (_rsids == null) // fired before GetBoard called
+			if (_rsids == null || _rsids.Count == 0) // fired before GetBoard called
 				return;
 
 			var serviceId = _rsids[_displayBoard.SelectedItem];
