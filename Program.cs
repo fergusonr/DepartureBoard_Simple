@@ -48,7 +48,7 @@ namespace DepartureBoard
 
 			if (!Guid.TryParse(_token.TokenValue, out Guid dummy))
 			{
-				MessageBox.ErrorQuery(80, 7, "Error", $"Invalid token:- {_token.TokenValue}", "Quit");
+				MessageBox.ErrorQuery(80, 7, "Error", $"Invalid token:- {_token.TokenValue}", 0, _border, "Quit");
 				Application.Shutdown();
 				return;
 			}
@@ -125,12 +125,10 @@ namespace DepartureBoard
 				_fromStationCode = args[0];
 				_toStationCode = args[1];
 
-				if(!_stationList.ContainsValue(_fromStationCode) || !_stationList.ContainsValue(_toStationCode))
-				{
-					MessageBox.ErrorQuery(80, 7, "Error", $"Invalid station code:- {_fromStationCode} {_toStationCode}");
-					Application.Shutdown();
-					return;
-				}
+				if(!_stationList.ContainsValue(_fromStationCode))
+					MessageBox.ErrorQuery(80, 7, "Error", $"Invalid 'from' station code:- {_fromStationCode}", 0, _border, "Continue");
+				else if(!_stationList.ContainsValue(_toStationCode))
+					MessageBox.ErrorQuery(80, 7, "Error", $"Invalid 'to' station code:- {_toStationCode}", 0, _border, "Continue");
 				else
 					Application.MainLoop.Invoke(GetBoard);
 			}
@@ -251,19 +249,20 @@ namespace DepartureBoard
 			_displayBoard.SetFocus();
 			_rsids?.Clear();
 
+			StationBoard2 board;
 #if TEST
-			var board = new StationBoard
+			board = new StationBoard2
 			{
 				locationName = _stationList.First(x => x.Value == _fromStationCode).Key,
 				filterType = FilterType.to,
 				filterLocationName = _stationList.FirstOrDefault(x => x.Value == _toStationCode).Key,
-				trainServices = new ServiceItem1[10],
+				trainServices = new ServiceItem2[10],
 				nrccMessages = new NRCCMessage[] { new NRCCMessage { Value = "Blackheath toilets out of order" } }
 			};
 			var time = DateTime.Now;
 			for (int i = 0; i < board.trainServices.Length; i++)
 			{
-				board.trainServices[i] = new ServiceItem1 
+				board.trainServices[i] = new ServiceItem2 
 				{
 					std = time.ToString("hh:mm"), 
 					destination = new ServiceLocation[] { new ServiceLocation { locationName = board.filterLocationName } }, 
@@ -275,18 +274,17 @@ namespace DepartureBoard
 				time = time.AddMinutes(4);
 			}
 #else
-			var task = _client.GetDepartureBoardAsync(_token, 10, _fromStationCode, _toStationCode, FilterType.to, 0, 120);
+
 			try
 			{
-				task.Wait();
+				board = _client.GetDepartureBoard(_token, 10, _fromStationCode, _toStationCode, FilterType.to, 0, 120);
 			}
 			catch (Exception e)
 			{
-				MessageBox.ErrorQuery(78, 10, "Error", e.Message, "Continue");
+				MessageBox.ErrorQuery(78, 10, "Error", e.Message, 0, _border, "Continue");
 				return;
 			}
 
-			var board = task.Result.GetStationBoardResult;
 #endif
 			_mainWindow.Title = $"{board.locationName} {board.filterType} {board.filterLocationName ?? _allDestinations}";
 
@@ -320,8 +318,9 @@ namespace DepartureBoard
 			if (serviceId == null)
 				return;
 
+			ServiceDetails details;
 #if TEST
-			var details = new ServiceDetails
+			details = new ServiceDetails
 			{
 				subsequentCallingPoints = MakeCallingPoints(
 					"Lewisham",	"Lewisham2", "Lewisham3","Lewisham4","Lewisham5", // padding for test
@@ -331,34 +330,31 @@ namespace DepartureBoard
 					"London Cannon Street")
 			};
 #else
-			var task = _client.GetServiceDetailsAsync(_token, serviceId);
 			try
 			{
-				task.Wait();
+				details = _client.GetServiceDetails(_token, serviceId);
 			}
 			catch (Exception e)
 			{
 				_displayMessages.SetSource(new List<string> { e.Message });
 				return;
 			}
-
-			var details = task.Result.GetServiceDetailsResult;
 #endif
 			_displayDetails.SetSource(details.subsequentCallingPoints[0].callingPoint.Select(x => $"{x.st} {x.locationName,-25}      {x.et,-10}").ToList());
 		}
 
 #if TEST
-		static ArrayOfCallingPoints[] MakeCallingPoints(params string[] callingPoints)
+		static ArrayOfCallingPoints1[] MakeCallingPoints(params string[] callingPoints)
 		{
-			var data = new ArrayOfCallingPoints[]
+			var data = new ArrayOfCallingPoints1[]
 			{
-				new ArrayOfCallingPoints  { callingPoint = new CallingPoint[callingPoints.Length] }
+				new ArrayOfCallingPoints1  { callingPoint = new CallingPoint1[callingPoints.Length] }
 			};
 
 			var time = DateTime.Now;
 			for (int i = 0; i < callingPoints.Length; i++)
 			{
-				data[0].callingPoint[i] = new CallingPoint { st = time.ToString("hh:mm"), locationName = callingPoints[i], et = "On time" };
+				data[0].callingPoint[i] = new CallingPoint1 { st = time.ToString("hh:mm"), locationName = callingPoints[i], et = "On time" };
 				time = time.AddMinutes(4);
 			}
 			return data;

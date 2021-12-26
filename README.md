@@ -1,5 +1,5 @@
 ﻿
-# .NET Core Departure board
+# .NET Departure board
 
 Simple demonstration of National Rail's live departure board web service. 
 Runs on Windows, Mac and Linux
