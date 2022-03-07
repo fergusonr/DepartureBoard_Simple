@@ -123,11 +123,11 @@ namespace DepartureBoard
 			if (args.Length >= 2)
 			{
 				_fromStationCode = args[0];
-				_toStationCode = args[1];
+				_toStationCode = args[1] == "ALL" ? null : args[1];
 
 				if(!_stationList.ContainsValue(_fromStationCode))
 					MessageBox.ErrorQuery(80, 7, "Error", $"Invalid 'from' station code:- {_fromStationCode}", 0, _border, "Continue");
-				else if(!_stationList.ContainsValue(_toStationCode))
+				else if(!_stationList.ContainsValue(_toStationCode) && _toStationCode != null)
 					MessageBox.ErrorQuery(80, 7, "Error", $"Invalid 'to' station code:- {_toStationCode}", 0, _border, "Continue");
 				else
 					Application.MainLoop.Invoke(GetBoard);
