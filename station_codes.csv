@@ -2,12 +2,16 @@ Abbey Wood,ABW
 Aber,ABE
 Abercynon,ACY
 Aberdare,ABA
+Aberdar,ABA
 Aberdeen,ABD
 Aberdour,AUR
 Aberdovey,AVY
+Aberdyfi,AVY
 Abererch,ABH
 Abergavenny,AGV
+Y-Fenni,AGV
 Abergele & Pensarn,AGL
+Pensarn (Clwyd),AGL
 Aberystwyth,AYW
 Accrington,ACR
 Achanalt,AAT
@@ -57,15 +61,16 @@ Ambergate,AMB
 Amberley,AMY
 Amersham,AMR
 Ammanford,AMF
+Rhydaman,AMF
 Ancaster,ANC
 Anderston,AND
 Andover,ADV
 Anerley,ANZ
-Angel Road,AGR
 Angmering,ANG
 Annan,ANN
 Anniesland,ANL
 Ansdell & Fairhaven,AFV
+Fairhaven,AFV
 Apperley Bridge,APY
 Appleby,APP
 Appledore (Kent),APD
@@ -80,6 +85,7 @@ Ardrossan South Beach,ASB
 Ardrossan Town,ADN
 Ardwick,ADK
 Argyle Street,AGS
+Argyll Street,AGS
 Arisaig,ARG
 Arlesey,ARL
 Armadale (West Lothian),ARM
@@ -87,6 +93,7 @@ Armathwaite,AWT
 Arnside,ARN
 Arram,ARR
 Arrochar & Tarbet,ART
+Tarbet (Strathclyde),ART
 Arundel,ARU
 Ascot (Berks),ACT
 Ascott-under-Wychwood,AUW
@@ -94,16 +101,20 @@ Ash,ASH
 Ash Vale,AHV
 Ashburys,ABY
 Ashchurch for Tewkesbury,ASC
+Tewkesbury,ASC
 Ashfield,ASF
 Ashford (Surrey),AFS
 Ashford International,AFK
+Ashford (Kent),AFK
 Ashford International (Eurostar),ASI
 Ashley,ASY
 Ashtead,AHD
 Ashton-under-Lyne,AHN
 Ashurst (Kent),AHS
 Ashurst New Forest,ANF
+Lyndhurst Road,ANF
 Ashwell & Morden,AWM
+Morden (Cambs),AWM
 Askam,ASK
 Aslockton,ALK
 Aspatria,ASP
@@ -153,6 +164,7 @@ Barking,BKG
 Barlaston,BRT
 Barming,BMG
 Barmouth,BRM
+Abermaw,BRM
 Barnehurst,BNH
 Barnes,BNS
 Barnes Bridge,BNI
@@ -168,8 +180,10 @@ Barrow Haven,BAV
 Barrow-in-Furness,BIF
 Barrow-Upon-Soar,BWS
 Barry,BRY
+Y Barri,BRY
 Barry Docks,BYD
 Barry Island,BYI
+Ynys Y Barri,BYI
 Barry Links,BYL
 Barton-on-Humber,BAU
 Basildon,BSO
@@ -196,6 +210,7 @@ Beckenham Hill,BEC
 Beckenham Junction,BKJ
 Bedford,BDM
 Bedford St Johns,BSJ
+St Johns (Bedford),BSJ
 Bedhampton,BDH
 Bedminster,BMT
 Bedworth,BEH
@@ -237,6 +252,7 @@ Bexley,BXY
 Bexleyheath,BXH
 Bicester North,BCS
 Bicester Village,BIT
+Bicester Town,BIT
 Bickley,BKL
 Bidston,BID
 Biggleswade,BIW
@@ -247,18 +263,24 @@ Billingshurst,BIG
 Bingham,BIN
 Bingley,BIY
 Birchgrove,BCG
+Llwynbedw,BCG
 Birchington-on-sea,BCH
 Birchwood,BWD
 Birkbeck,BIK
 Birkdale,BDL
 Birkenhead Central,BKC
 Birkenhead Hamilton Square,BKQ
+Hamilton Square Birkenhead,BKQ
 Birkenhead North,BKN
 Birkenhead Park,BKP
 Birmingham International,BHI
+Birmingham Airport,BHI
 Birmingham Moor Street,BMO
+Moor Street (Birmingham),BMO
 Birmingham New Street,BHM
+New Street (Birmingham),BHM
 Birmingham Snow Hill,BSW
+Snow Hill (Birmingham),BSW
 Bishop Auckland,BIA
 Bishopbriggs,BBG
 Bishops Stortford,BIS
@@ -286,8 +308,10 @@ Bletchley,BLY
 Bloxwich,BLX
 Bloxwich North,BWN
 Blundellsands & Crosby,BLN
+Crosby,BLN
 Blythe Bridge,BYB
 Bodmin Parkway,BOD
+Bodmin Road,BOD
 Bodorgan,BOR
 Bognor Regis,BOG
 Bogston,BGS
@@ -299,6 +323,7 @@ Bootle New Strand,BNW
 Bootle Oriel Road,BOT
 Bordesley,BBS
 Borough Green & Wrotham,BRG
+Wrotham,BRG
 Borth,BRH
 Bosham,BOH
 Boston,BSN
@@ -313,11 +338,13 @@ Bowling,BWG
 Box Hill & Westhumble,BXW
 Bracknell,BCE
 Bradford Forster Square,BDQ
+Forster Square (Bradford),BDQ
 Bradford Interchange,BDI
 Bradford-on-Avon,BOA
 Brading,BDN
 Braintree,BTR
 Braintree Freeport,BTP
+Freeport (Braintree),BTP
 Bramhall,BML
 Bramley (Hants),BMY
 Bramley (W Yorks),BLE
@@ -335,6 +362,7 @@ Bricket Wood,BWO
 Bridge of Allan,BEA
 Bridge of Orchy,BRO
 Bridgend,BGN
+Pen-y-bont Ar Ogwr,BGN
 Bridgeton,BDG
 Bridgwater,BWT
 Bridlington,BDT
@@ -346,8 +374,10 @@ Brimsdown,BMD
 Brinnington,BNT
 Bristol Parkway,BPW
 Bristol Temple Meads,BRI
+Temple Meads (Bristol),BRI
 Brithdir,BHD
 Briton Ferry,BNF
+Llansawel,BNF
 Brixton,BRX
 Broad Green,BGE
 Broadbottom,BDB
@@ -380,6 +410,7 @@ Bruton,BRU
 Bryn,BYN
 Buckenham (Norfolk),BUC
 Buckley,BCK
+Bwcle,BCK
 Bucknell,BUK
 Buckshaw Parkway,BSV
 Bugle,BGL
@@ -396,6 +427,7 @@ Burnham-on-Crouch,BUU
 Burnley Barracks,BUB
 Burnley Central,BNC
 Burnley Manchester Road,BYM
+Manchester Road (Burnley),BYM
 Burnside (Strathclyde),BUI
 Burntisland,BTS
 Burscough Bridge,BCB
@@ -411,20 +443,26 @@ Butlers Lane,BUL
 Buxted,BXD
 Buxton,BUX
 Byfleet & New Haw,BFN
+New Haw,BFN
 Bynea,BYE
+Y Bynie,BYE
 Cadoxton,CAD
+Tregatwg,CAD
 Caergwrle,CGW
 Caerphilly,CPH
+Caerffili,CPH
 Caersws,CWS
 Caldercruix,CAC
 Caldicot,CDT
 Caledonian Rd & Barnsbury,CIR
 Calstock,CSK
 Cam & Dursley,CDU
+Dursley,CDU
 Camberley,CAM
 Camborne,CBN
 Cambridge,CBG
 Cambridge Heath,CBH
+Cambridge North,CMB
 Cambuslang,CBL
 Camden Road,CMD
 Camelon,CMO
@@ -439,16 +477,21 @@ Capenhurst,CPU
 Carbis Bay,CBB
 Cardenden,CDD
 Cardiff Bay,CDB
+Bae Caerdydd,CDB
 Cardiff Central,CDF
+Caerdydd Canolog,CDF
 Cardiff Queen Street,CDQ
+Heol Y Frenhines Caerdydd,CDQ
 Cardonald,CDO
 Cardross,CDR
 Carfin,CRF
 Cark & Cartmel,CAK
+Cartmel,CAK
 Carlisle,CAR
 Carlton,CTO
 Carluke,CLU
 Carmarthen,CMN
+Caerfyrddin,CMN
 Carmyle,CML
 Carnforth,CNF
 Carnoustie,CAN
@@ -481,6 +524,7 @@ Chapel-en-le-Frith,CEF
 Chapelton (Devon),CPN
 Chapeltown (South Yorks),CLN
 Chappel & Wakes Colne,CWC
+Wakes Colne,CWC
 Charing (Kent),CHG
 Charing Cross (Glasgow),CHC
 Charlbury,CBY
@@ -498,6 +542,7 @@ Chelmsford,CHM
 Chelsfield,CLD
 Cheltenham Spa,CNM
 Chepstow,CPW
+Cas-Gwent,CPW
 Cherry Tree,CYT
 Chertsey,CHY
 Cheshunt,CHN
@@ -508,6 +553,7 @@ Chester Road,CRD
 Chesterfield,CHD
 Chester-le-Street,CLS
 Chestfield & Swalecliffe,CSW
+Swalecliffe,CSW
 Chetnole,CNO
 Chichester,CCH
 Chilham,CIL
@@ -517,6 +563,7 @@ Chinley,CLY
 Chippenham,CPM
 Chipstead,CHP
 Chirk,CRK
+Y Waun,CRK
 Chislehurst,CIT
 Chiswick,CHK
 Cholsey,CHO
@@ -525,6 +572,7 @@ Chorleywood,CLW
 Christchurch,CHR
 Christs Hospital,CHH
 Church & Oswaldtwistle,CTW
+Oswaldtwistle,CTW
 Church Fenton,CHF
 Church Stretton,CTT
 Cilmeri,CIM
@@ -551,16 +599,19 @@ Coatbridge Central,CBC
 Coatbridge Sunnyside,CBS
 Coatdyke,COA
 Cobham & Stoke d'Abernon,CSD
+Stoke D'abernon,CSD
 Codsall,CSL
 Cogan,CGN
 Colchester,COL
 Colchester Town,CET
+St Botolphs,CET
 Coleshill Parkway,CEH
 Collingham,CLM
 Collington,CLL
 Colne,CNE
 Colwall,CWL
 Colwyn Bay,CWB
+Bae Colwyn,CWB
 Combe (Oxon),CME
 Commondale,COM
 Congleton,CNG
@@ -577,6 +628,7 @@ Coombe Junction Halt,COE
 Copplestone,COP
 Corbridge,CRB
 Corby,COR
+Corfe Castle,CFC
 Corkerhill,CKH
 Corkickle,CKL
 Corpach,CPA
@@ -589,6 +641,7 @@ Cottingham,CGM
 Cottingley,COT
 Coulsdon South,CDS
 Coulsdon Town,CDN
+Smitham,CDN
 Coventry,COV
 Coventry Arena,CAA
 Cowden (Kent),CWN
@@ -623,6 +676,7 @@ Crossmyloof,CMY
 Croston,CSO
 Crouch Hill,CRH
 Crowborough,COH
+Jarvis Brook,COH
 Crowhurst,CWU
 Crowle,CWE
 Crowthorne,CRN
@@ -669,6 +723,7 @@ Dawlish Warren,DWW
 Deal,DEA
 Dean (Wilts),DEN
 Deansgate,DGT
+Manchester G-mex,DGT
 Deganwy,DGY
 Deighton,DHN
 Delamere,DLM
@@ -686,10 +741,12 @@ Devonport Dockyard,DOC
 Dewsbury,DEW
 Didcot Parkway,DID
 Digby & Sowton,DIG
+Sowton,DIG
 Dilton Marsh,DMH
 Dinas (Rhondda),DMG
 Dinas Powys,DNS
 Dingle Road,DGL
+Heol Dingle,DGL
 Dingwall,DIN
 Dinsdale,DND
 Dinting,DTG
@@ -706,9 +763,11 @@ Dorchester West,DCW
 Dore & Totley,DOR
 Dorking (Main),DKG
 Dorking Deepdene,DPD
+Deepdene,DPD
 Dorking West,DKT
 Dormans,DMS
 Dorridge,DDG
+Knowle,DDG
 Dove Holes,DVH
 Dover Priory,DVP
 Dovercourt,DVC
@@ -743,8 +802,10 @@ Dunblane,DBL
 Duncraig,DCG
 Dundee,DEE
 Dunfermline Queen Margaret,DFL
+Queen Margaret(dunfermline,DFL
 Dunfermline Town,DFE
 Dunkeld & Birnam,DKD
+Birnam,DKD
 Dunlop,DNL
 Dunrobin Castle,DNO
 Dunston,DOT
@@ -779,7 +840,9 @@ Eastleigh,ESL
 Eastrington,EGN
 Ebbsfleet International,EBD
 Ebbw Vale Parkway,EBV
+Parcfford Glyn Ebwy,EBV
 Ebbw Vale Town,EBB
+Tref Glynebwy,EBB
 Eccles (Manchester),ECC
 Eccles Road,ECS
 Eccleston Park,ECL
@@ -789,9 +852,11 @@ Edenbridge,EBR
 Edenbridge Town,EBT
 Edge Hill,EDG
 Edinburgh,EDB
+Waverley,EDB
 Edinburgh Gateway,EGY
 Edinburgh Park,EDP
 Edmonton Green,EDR
+Lower Edmonton,EDR
 Effingham Junction,EFF
 Eggesford,EGG
 Egham,EGH
@@ -806,12 +871,15 @@ Elmswell,ESW
 Elsecar,ELR
 Elsenham (Essex),ESM
 Elstree & Borehamwood,ELS
+Borehamwood,ELS
 Eltham,ELW
 Elton & Orston,ELO
+Orston,ELO
 Ely,ELY
 Emerson Park,EMP
 Emsworth,EMS
 Energlyn & Churchill Park,ECP
+Churchill Park,ECP
 Enfield Chase,ENC
 Enfield Lock,ENL
 Enfield Town,ENF
@@ -826,27 +894,33 @@ Eskbank,EKB
 Essex Road,EXR
 Etchingham,ETC
 Euxton Balshaw Lane,EBA
+Balshaw Lane (Euxton),EBA
 Evesham,EVE
 Ewell East,EWE
 Ewell West,EWW
 Exeter Central,EXC
 Exeter St David's,EXD
 Exeter St Thomas,EXT
+St Thomas (Exeter),EXT
 Exhibition Centre (Glasgow),EXG
 Exmouth,EXM
 Exton,EXN
 Eynsford,EYN
 Fairbourne,FRB
+Y Friog,FRB
 Fairfield,FRF
 Fairlie,FRL
 Fairwater,FRW
+Tyllgoed,FRW
 Falconwood,FCN
 Falkirk Grahamston,FKG
+Grahamston (Falkirk),FKG
 Falkirk High,FKK
 Falls of Cruachan,FOC
 Falmer,FMR
 Falmouth Docks,FAL
 Falmouth Town,FMT
+The Dell,FMT
 Fareham,FRM
 Farnborough (Main),FNB
 Farnborough North,FNN
@@ -868,16 +942,21 @@ Fenny Stratford,FEN
 Fernhill,FER
 Ferriby,FRY
 Ferryside,FYS
+Glanyfferi,FYS
 Ffairfach,FFA
 Filey,FIL
 Filton Abbey Wood,FIT
+Abbey Wood (Filton),FIT
 Finchley Road & Frognal,FNY
+Frognal,FNY
 Finsbury Park,FPK
 Finstock,FIN
 Fishbourne (Sussex),FSB
 Fishersgate,FSG
 Fishguard & Goodwick,FGW
+Abergwaun Ac Wdig,FGW
 Fishguard Harbour,FGH
+Abergwaun,FGH
 Fiskerton,FSK
 Fitzwilliam,FZW
 Five Ways,FWY
@@ -902,6 +981,7 @@ Foxfield,FOX
 Foxton,FXN
 Frant,FRT
 Fratton,FTN
+Portsmouth Fc,FTN
 Freshfield,FRE
 Freshford,FFD
 Frimley,FML
@@ -946,12 +1026,14 @@ Glaisdale,GLS
 Glan Conwy,GCW
 Glasgow Central,GLC
 Glasgow Queen Street,GLQ
+Queen Street (Glasgow),GLQ
 Glasshoughton,GLH
 Glazebrook,GLZ
 Gleneagles,GLE
 Glenfinnan,GLF
 Glengarnock,GLG
 Glenrothes with Thornton,GLT
+Thornton (Fife),GLT
 Glossop,GLO
 Gloucester,GCR
 Glynde,GLY
@@ -963,17 +1045,20 @@ Goldthorpe,GOE
 Golf Street,GOF
 Golspie,GOL
 Gomshall,GOM
+Shere,GOM
 Goodmayes,GMY
 Goole,GOO
 Goostrey,GTR
 Gordon Hill,GDH
 Gorebridge,GBG
 Goring & Streatley,GOR
+Streatley,GOR
 Goring-by-Sea,GBS
 Gorton,GTO
 Gospel Oak,GPO
 Gourock,GRK
 Gowerton,GWN
+Tre-Gwyr,GWN
 Goxhill,GOX
 Grange Park,GPK
 Grange-Over-Sands,GOS
@@ -988,8 +1073,10 @@ Great Bentley,GRB
 Great Chesterford,GRC
 Great Coates,GCT
 Great Malvern,GMV
+Malvern,GMV
 Great Missenden,GMN
 Great Yarmouth,GYM
+Yarmouth (Norfolk),GYM
 Green Lane,GNL
 Green Road,GNR
 Greenbank,GBK
@@ -1020,6 +1107,7 @@ Hackney Central,HKC
 Hackney Downs,HAC
 Hackney Wick,HKW
 Haddenham & Thame Parkway,HDM
+Thame,HDM
 Haddiscoe,HAD
 Hadfield,HDF
 Hadley Wood,HDW
@@ -1050,6 +1138,7 @@ Hampton-in-Arden,HIA
 Hamstead (Birmingham),HSD
 Hamworthy,HAM
 Hanborough,HND
+Handborough,HND
 Handforth,HTH
 Hanwell,HAN
 Hapton,HPN
@@ -1064,21 +1153,26 @@ Harpenden,HPD
 Harrietsham,HRM
 Harringay,HGY
 Harringay Green Lanes,HRY
+Harringay Stadium,HRY
 Harrington,HRR
 Harrogate,HGT
 Harrow & Wealdstone,HRW
+Wealdstone,HRW
 Harrow-on-the-Hill,HOH
 Hartford (Cheshire),HTF
 Hartlebury,HBY
 Hartlepool,HPL
+West Hartlepool,HPL
 Hartwood,HTW
 Harwich International,HPQ
+Parkeston Quay,HPQ
 Harwich Town,HWC
 Haslemere,HSL
 Hassocks,HSK
 Hastings,HGS
 Hatch End,HTE
 Hatfield & Stainforth,HFS
+Stainforth,HFS
 Hatfield (Herts),HAT
 Hatfield Peverel,HAP
 Hathersage,HSG
@@ -1087,12 +1181,16 @@ Hatton,HTN
 Havant,HAV
 Havenhouse,HVN
 Haverfordwest,HVF
+Hwlffordd,HVF
 Hawarden,HWD
+Penarlag,HWD
 Hawarden Bridge,HWB
+Pont Penarlag,HWB
 Hawkhead,HKH
 Haydon Bridge,HDB
 Haydons Road,HYR
 Hayes & Harlington,HAY
+Harlington (Middx),HAY
 Hayes (Kent),HYS
 Hayle,HYL
 Haymarket,HYM
@@ -1104,7 +1202,9 @@ Headstone Lane,HDL
 Heald Green,HDG
 Healing,HLI
 Heath High Level,HHL
+Lefel Uchel Y Mynydd Bychan,HHL
 Heath Low Level,HLL
+Lefel Isel Y Mynydd Bychan,HLL
 Heathrow Airport Terminal 4,HAF
 Heathrow Airport Terminal 5,HWV
 Heathrow Airport Terminals 1 2 and 3,HXX
@@ -1145,7 +1245,9 @@ High Wycombe,HWY
 Higham (Kent),HGM
 Highams Park,HIP
 Highbridge & Burnham,HIG
+Burnham-on-Sea,HIG
 Highbury & Islington,HHY
+Islington,HHY
 Hightown,HTO
 Hildenborough,HLB
 Hillfoot,HLF
@@ -1165,6 +1267,7 @@ Holmes Chapel,HCH
 Holmwood,HLM
 Holton Heath,HOL
 Holyhead,HHD
+Caergybi,HHD
 Holytown,HLY
 Homerton,HMN
 Honeybourne,HYB
@@ -1175,7 +1278,9 @@ Hook,HOK
 Hooton,HOO
 Hope (Derbyshire),HOP
 Hope (Flintshire),HPE
+Yr Hob,HPE
 Hopton Heath,HPT
+Horden,HRE
 Horley,HOR
 Hornbeam Park,HBP
 Hornsey,HRN
@@ -1189,6 +1294,7 @@ Hough Green,HGN
 Hounslow,HOU
 Hove,HOV
 Hoveton & Wroxham,HXM
+Wroxham,HXM
 How Wood (Herts),HWW
 Howden,HOW
 Howwood (Renfrewshire),HOZ
@@ -1198,6 +1304,7 @@ Hubberts Bridge,HBB
 Hucknall,HKN
 Huddersfield,HUD
 Hull,HUL
+Paragon (Hull),HUL
 Humphrey Park,HUP
 Huncoat,HCT
 Hungerford,HGD
@@ -1216,9 +1323,11 @@ Hythe (Essex),HYH
 IBM Halt,IBM
 Ifield,IFI
 Ilford,IFD
+Ilkeston,ILN
 Ilkley,ILK
 Imperial Wharf,IMW
 Ince & Elton,INE
+Elton (Cheshire),INE
 Ince (Manchester),INC
 Ingatestone,INT
 Insch,INS
@@ -1253,12 +1362,14 @@ Kempton Park Racecourse,KMP
 Kemsing,KMS
 Kemsley,KML
 Kendal,KEN
+Kenilworth,KNW
 Kenley,KLY
 Kennett,KNE
 Kennishead,KNS
 Kensal Green,KNL
 Kensal Rise,KNR
 Kensington Olympia,KPA
+Olympia,KPA
 Kent House,KTH
 Kentish Town,KTN
 Kentish Town West,KTW
@@ -1273,10 +1384,12 @@ Kidbrooke,KDB
 Kidderminster,KID
 Kidsgrove,KDG
 Kidwelly,KWL
+Cydweli,KWL
 Kilburn High Road,KBN
 Kildale,KLD
 Kildonan,KIL
 Kilgetty,KGT
+Cilgeti,KGT
 Kilmarnock,KMK
 Kilmaurs,KLM
 Kilpatrick,KPT
@@ -1304,7 +1417,9 @@ Kirkby-in-Furness,KBF
 Kirkcaldy,KDY
 Kirkconnel,KRK
 Kirkdale,KKD
+Everton Fc,KKD
 Kirkham & Wesham,KKM
+Wesham,KKM
 Kirkhill,KKH
 Kirknewton,KKN
 Kirkstall Forge,KLF
@@ -1315,9 +1430,11 @@ Kiveton Park,KVP
 Knaresborough,KNA
 Knebworth,KBW
 Knighton,KNI
+Trefyclo,KNI
 Knockholt,KCK
 Knottingley,KNO
 Knucklas,KNU
+Cnwclas,KNU
 Knutsford,KNF
 Kyle of Lochalsh,KYL
 Ladybank,LDY
@@ -1327,6 +1444,7 @@ Lairg,LRG
 Lake,LKE
 Lakenheath,LAK
 Lamphey,LAM
+Landyfail,LAM
 Lanark,LNK
 Lancaster,LAN
 Lancing,LAC
@@ -1348,6 +1466,7 @@ Laurencekirk,LAU
 Lawrence Hill,LWH
 Layton (Lancs),LAY
 Lazonby & Kirkoswald,LZB
+Kirkoswald,LZB
 Lea Bridge,LEB
 Lea Green,LEG
 Lea Hall,LEH
@@ -1380,6 +1499,7 @@ Lichfield City,LIC
 Lichfield Trent Valley,LTV
 Lidlington,LID
 Limehouse,LHS
+Stepney East,LHS
 Lincoln Central,LCN
 Lingfield,LFD
 Lingwood,LGD
@@ -1388,6 +1508,7 @@ Liphook,LIP
 Liskeard,LSK
 Liss,LIS
 Lisvane & Thornhill,LVT
+Llysfaen A Draenen Penygraig,LVT
 Little Kimble,LTK
 Little Sutton,LTT
 Littleborough,LTL
@@ -1396,26 +1517,34 @@ Littlehaven,LVN
 Littleport,LTP
 Liverpool Central,LVC
 Liverpool James Street,LVJ
+James Street (Liverpool),LVJ
 Liverpool Lime Street,LIV
+Lime Street (Liverpool),LIV
 Liverpool South Parkway,LPY
+Allerton,LPY
 Livingston North,LSN
 Livingston South,LVG
 Llanaber,LLA
 Llanbedr,LBR
 Llanbister Road,LLT
+Heol Llanbister,LLT
 Llanbradach,LNB
 Llandaf,LLN
 Llandanwg,LDN
 Llandecwyn,LLC
 Llandeilo,LLL
 Llandovery,LLV
+Llanymddyfri,LLV
 Llandrindod,LLO
+Llandrindod Wells,LLO
 Llandudno,LLD
 Llandudno Junction,LLJ
+Cyffordd Llandudno,LLJ
 Llandybie,LLI
 Llanelli,LLE
 Llanfairfechan,LLF
 Llanfairpwll,LPG
+Llanfair Pg,LPG
 Llangadog,LLG
 Llangammarch,LLM
 Llangennech,LLH
@@ -1426,6 +1555,7 @@ Llanishen,LLS
 Llanrwst,LWR
 Llansamlet,LAS
 Llantwit Major,LWM
+Llanilltud Fawr,LWM
 Llanwrda,LNR
 Llanwrtyd,LNW
 Llwyngwril,LLW
@@ -1440,25 +1570,39 @@ Lochwinnoch,LHW
 Lockerbie,LOC
 Lockwood,LCK
 London Blackfriars,BFR
+Blackfriars,BFR
 London Bridge,LBG
 London Cannon Street,CST
+Cannon Street,CST
 London Charing Cross,CHX
+Charing Cross,CHX
 London Euston,EUS
+Euston,EUS
 London Fenchurch Street,FST
+Fenchurch Street,FST
 London Fields,LOF
 London Kings Cross,KGX
+Kings Cross,KGX
 London Liverpool Street,LST
+Liverpool Street,LST
 London Marylebone,MYB
+Marylebone,MYB
 London Paddington,PAD
+Paddington,PAD
 London Road (Brighton),LRB
 London Road (Guildford),LRD
-London St Pancras (Intl),SPX
+# SPX bad code? server error,
+#London St Pancras (Intl),SPX
 London St Pancras International,STP
 London Victoria,VIC
+Victoria (London),VIC
 London Waterloo,WAT
+Waterloo,WAT
 London Waterloo East,WAE
+Waterloo East,WAE
 Long Buckby,LBK
 Long Eaton,LGE
+Sawley Junction,LGE
 Long Preston,LPR
 Longbeck,LGK
 Longbridge,LOB
@@ -1469,11 +1613,13 @@ Longport,LPT
 Longton,LGN
 Looe,LOO
 Lostock,LOT
+Lostock Parkway,LOT
 Lostock Gralam,LTG
 Lostock Hall,LOH
 Lostwithiel,LOS
 Loughborough,LBO
 Loughborough Junction,LGJ
+Low Moor,LMR
 Lowdham,LOW
 Lower Sydenham,LSY
 Lowestoft,LWT
@@ -1492,7 +1638,9 @@ Macclesfield,MAC
 Machynlleth,MCN
 Maesteg,MST
 Maesteg (Ewenny Road),MEW
+Ewenny Road (Maesteg),MEW
 Maghull,MAG
+Maghull North,MNS
 Maiden Newton,MDN
 Maidenhead,MAI
 Maidstone Barracks,MDB
@@ -1504,17 +1652,23 @@ Malton,MLT
 Malvern Link,MVL
 Manchester Airport,MIA
 Manchester Oxford Road,MCO
+Oxford Road (Manchester),MCO
 Manchester Piccadilly,MAN
+Piccadilly (Manchester),MAN
 Manchester United Football Ground,MUF
 Manchester Victoria,MCV
+Victoria (Manchester),MCV
 Manea,MNE
 Manningtree,MNG
+Dedham Vale,MNG
 Manor Park,MNP
 Manor Road,MNR
 Manorbier,MRB
+Maenorbyr,MRB
 Manors,MAS
 Mansfield,MFT
 Mansfield Woodhouse,MSW
+Woodhouse (Mansfield),MSW
 March,MCH
 Marden (Kent),MRN
 Margate,MAR
@@ -1549,12 +1703,17 @@ Menston,MNN
 Meols,MEO
 Meols Cop,MEC
 Meopham,MEP
+Meridian Water,MRW
+Angel Road,MRW
 Merryton,MEY
 Merstham,MHM
 Merthyr Tydfil,MER
+Merthyr Tudful,MER
 Merthyr Vale,MEV
+Ynysowen,MEV
 Metheringham,MGM
 MetroCentre,MCE
+Gateshead Metrocentre,MCE
 Mexborough,MEX
 Micheldever,MIC
 Micklefield,MIK
@@ -1563,6 +1722,7 @@ Middlewood,MDL
 Midgham,MDG
 Milford (Surrey),MLF
 Milford Haven,MFH
+Aberdaugleddau,MFH
 Mill Hill (Lancs),MLH
 Mill Hill Broadway,MIL
 Millbrook (Beds),MLB
@@ -1577,6 +1737,7 @@ Minster,MSR
 Mirfield,MIR
 Mistley,MIS
 Mitcham Eastfields,MTC
+Eastfields (Mitcham),MTC
 Mitcham Junction,MIJ
 Mobberley,MOB
 Monifieth,MON
@@ -1609,23 +1770,28 @@ Motherwell,MTH
 Motspur Park,MOT
 Mottingham,MTG
 Mottisfont & Dunbridge,DBG
+Dunbridge,DBG
 Mouldsworth,MLD
 Moulsecoomb,MCB
 Mount Florida,MFL
 Mount Vernon,MTV
 Mountain Ash,MTA
+Aberpennar,MTA
 Muir of Ord,MOO
 Muirend,MUI
 Musselburgh,MUB
 Mytholmroyd,MYT
 Nafferton,NFN
 Nailsea & Backwell,NLS
+Backwell,NLS
 Nairn,NRN
 Nantwich,NAN
 Narberth,NAR
+Arberth,NAR
 Narborough,NBR
 Navigation Road,NVR
 Neath,NTH
+Castell-Nedd,NTH
 Needham Market,NMT
 Neilston,NEI
 Nelson,NEL
@@ -1647,12 +1813,16 @@ New Lane,NLN
 New Malden,NEM
 New Mills Central,NMC
 New Mills Newtown,NMN
+Newtown (New Mills),NMN
 New Milton,NWM
 New Pudsey,NPD
 New Southgate,NSG
 Newark Castle,NCT
+Castle (Newark),NCT
 Newark North Gate,NNG
+North Gate (Newark),NNG
 Newbridge,NBE
+Trecelyn,NBE
 Newbury,NBY
 Newbury Racecourse,NRC
 Newcastle,NCL
@@ -1664,6 +1834,7 @@ Newington,NGT
 Newmarket,NMK
 Newport (Essex),NWE
 Newport (South Wales),NWP
+Casnewydd,NWP
 Newquay,NQY
 Newstead,NSD
 Newton (Lanark),NTN
@@ -1676,7 +1847,9 @@ Newton-le-Willows,NLW
 Newtonmore,NWR
 Newton-on-Ayr,NOA
 Newtown (Powys),NWT
+Y Drenewydd,NWT
 Ninian Park,NNP
+Parc Ninian,NNP
 Nitshill,NIT
 Norbiton,NBT
 Norbury,NRB
@@ -1686,7 +1859,9 @@ North Berwick,NBW
 North Camp,NCM
 North Dulwich,NDL
 North Fambridge,NFA
+Fambridge,NFA
 North Llanrwst,NLR
+Gogledd Llanrwst,NLR
 North Queensferry,NQU
 North Road (Darlington),NRD
 North Sheen,NSH
@@ -1699,7 +1874,6 @@ Northfleet,NFL
 Northolt Park,NLT
 Northumberland Park,NUM
 Northwich,NWI
-Norton Bridge,NTB
 Norwich,NRW
 Norwood Junction,NWD
 Nottingham,NOT
@@ -1714,6 +1888,7 @@ Oakleigh Park,OKL
 Oban,OBN
 Ockendon,OCK
 Ockley,OLY
+Capel,OLY
 Okehampton,OKE
 Old Hill,OHL
 Old Roan,ORN
@@ -1740,8 +1915,11 @@ Paddock Wood,PDW
 Padgate,PDG
 Paignton,PGN
 Paisley Canal,PCN
+Canal (Paisley),PCN
 Paisley Gilmour Street,PYG
+Gilmour Street (Paisley),PYG
 Paisley St James,PYJ
+St James (Paisley),PYJ
 Palmers Green,PAL
 Pangbourne,PAN
 Pannal,PNL
@@ -1761,9 +1939,13 @@ Peckham Rye,PMR
 Pegswood,PEG
 Pemberton,PEM
 Pembrey & Burry Port,PBY
+Pembre A Porth Tywyn,PBY
 Pembroke,PMB
+Penfro,PMB
 Pembroke Dock,PMD
+Doc Penfro,PMD
 Penally,PNA
+Penalun,PNA
 Penarth,PEN
 Pencoed,PCD
 Pengam,PGM
@@ -1775,6 +1957,7 @@ Penkridge,PKG
 Penmaenmawr,PMW
 Penmere,PNM
 Penrhiwceiber,PER
+Penrikyber,PER
 Penrhyndeudraeth,PRH
 Penrith (North Lakes),PNR
 Penryn (Cornwall),PYN
@@ -1783,6 +1966,7 @@ Penshurst,PHR
 Pentre-Bach,PTB
 Pen-y-Bont,PNY
 Penychain,PNC
+Pwllheli Holiday Camp,PNC
 Penyffordd,PNF
 Penzance,PNZ
 Perranwell,PRW
@@ -1793,6 +1977,7 @@ Peterborough,PBO
 Petersfield,PTR
 Petts Wood,PET
 Pevensey & Westham,PEV
+Westham,PEV
 Pevensey Bay,PEB
 Pewsey,PEW
 Pilning,PIL
@@ -1811,19 +1996,26 @@ Polegate,PLG
 Polesworth,PSW
 Pollokshaws East,PWE
 Pollokshaws West,PWW
+Burrell,PWW
 Pollokshields East,PLE
 Pollokshields West,PLW
+Strathbungo,PLW
 Polmont,PMT
 Polsloe Bridge,POL
 Ponders End,PON
 Pontarddulais,PTD
 Pontefract Baghill,PFR
+Baghill (Pontefract),PFR
 Pontefract Monkhill,PFM
+Monkhill (Pontefract),PFM
 Pontefract Tanshelf,POT
+Tanshelf (Pontefract),POT
 Pontlottyn,PLT
+Pontlotyn,PLT
 Pontyclun,PYC
 Pont-y-Pant,PYP
 Pontypool & New Inn,PPL
+Pontypwl,PPL
 Pontypridd,PPD
 Poole,POO
 Poppleton,POP
@@ -1832,13 +2024,16 @@ Port Sunlight,PSL
 Port Talbot Parkway,PTA
 Portchester,PTC
 Porth,POR
+Y Porth,POR
 Porthmadog,PTM
 Portlethen,PLN
 Portslade,PLD
 Portsmouth & Southsea,PMS
+Southsea,PMS
 Portsmouth Arms,PMA
 Portsmouth Harbour,PMH
 Possilpark & Parkhouse,PPK
+Parkhouse,PPK
 Potters Bar,PBR
 Poulton-le-Fylde,PFY
 Poynton,PYT
@@ -1852,6 +2047,7 @@ Prestonpans,PST
 Prestwick International Airport,PRA
 Prestwick Town,PTW
 Priesthill & Darnley,PTL
+Darnley,PTL
 Princes Risborough,PRR
 Prittlewell,PRL
 Prudhoe,PRU
@@ -1863,26 +2059,33 @@ Putney,PUT
 Pwllheli,PWL
 Pye Corner,PYE
 Pyle,PYL
+Y Pil,PYL
 Quakers Yard,QYD
+Mynwent Y Crynwyr,QYD
 Queenborough,QBR
 Queens Park (Glasgow),QPK
 Queens Park (London),QPW
 Queens Road (Peckham),QRP
 Queenstown Road (Battersea),QRB
+Battersea(queenstown Road),QRB
 Quintrell Downs,QUI
+Quintrel Downs,QUI
 Radcliffe-on-Trent,RDF
 Radlett,RDT
 Radley,RAD
 Radyr,RDR
+Radur,RDR
 Rainford,RNF
 Rainham (Essex),RNM
 Rainham (Kent),RAI
 Rainhill,RNH
 Ramsgate,RAM
 Ramsgreave & Wilpshire,RGW
+Wilpshire,RGW
 Rannoch,RAN
 Rauceby,RAU
 Ravenglass for Eskdale,RAV
+Eskdale,RAV
 Ravensbourne,RVB
 Ravensthorpe,RVN
 Rawcliffe,RWC
@@ -1907,10 +2110,12 @@ Reigate,REI
 Renton,RTN
 Retford,RET
 Rhiwbina,RHI
+Rhiwbeina,RHI
 Rhoose Cardiff International Airport,RIA
 Rhosneigr,RHO
 Rhyl,RHL
 Rhymney,RHY
+Rhymni,RHY
 Ribblehead,RHD
 Rice Lane,RIL
 Richmond (London),RMD
@@ -1919,8 +2124,10 @@ Riddlesdown,RDD
 Ridgmont,RID
 Riding Mill,RDM
 Risca & Pontymister,RCA
+Rhisga A Pontymister,RCA
 Rishton,RIS
 Robertsbridge,RBR
+Robroyston,RRN
 Roby,ROB
 Rochdale,RCD
 Roche,ROC
@@ -1929,8 +2136,10 @@ Rochford,RFD
 Rock Ferry,RFY
 Rogart,ROG
 Rogerstone,ROR
+Y Ty Du,ROR
 Rolleston,ROL
 Roman Bridge,RMB
+Pont Rufeinig,RMB
 Romford,RMF
 Romiley,RML
 Romsey,ROM
@@ -1947,6 +2156,7 @@ Roy Bridge,RYB
 Roydon,RYN
 Royston,RYS
 Ruabon,RUA
+Rhiwabon,RUA
 Rufford,RUF
 Rugby,RUG
 Rugeley Town,RGT
@@ -1959,11 +2169,13 @@ Rutherglen,RUT
 Ryde Esplanade,RYD
 Ryde Pier Head,RYP
 Ryde St Johns Road,RYR
+St Johns Road (Ryde),RYR
 Ryder Brow,RRB
 Rye (Sussex),RYE
 Rye House,RYH
 Salford Central,SFD
 Salford Crescent,SLD
+Salford University,SLD
 Salfords (Surrey),SAF
 Salhouse,SAH
 Salisbury,SAL
@@ -1975,6 +2187,7 @@ Saltmarshe,SAM
 Salwick,SLW
 Sampford Courtenay,SMC
 Sandal & Agbrigg,SNA
+Agbrigg,SNA
 Sandbach,SDB
 Sanderstead,SNR
 Sandhills,SDL
@@ -1983,9 +2196,11 @@ Sandling,SDG
 Sandown,SAN
 Sandplace,SDP
 Sandwell & Dudley,SAD
+Dudley,SAD
 Sandwich,SDW
 Sandy,SDY
 Sankey for Penketh,SNK
+Penketh,SNK
 Sanquhar,SQH
 Sarn,SRR
 Saundersfoot,SDF
@@ -2000,11 +2215,13 @@ Scunthorpe,SCU
 Sea Mills,SML
 Seaford (Sussex),SEF
 Seaforth & Litherland,SFL
+Litherland,SFL
 Seaham,SEA
 Seamer,SEM
 Seascale,SSC
 Seaton Carew,SEC
 Seer Green & Jordans,SRG
+Jordans,SRG
 Selby,SBY
 Selhurst,SRS
 Sellafield,SEL
@@ -2016,6 +2233,7 @@ Seven Sisters,SVS
 Sevenoaks,SEV
 Severn Beach,SVB
 Severn Tunnel Junction,STJ
+Cyffordd Twnel Hafren,STJ
 Shadwell,SDE
 Shalford (Surrey),SFR
 Shanklin,SHN
@@ -2066,6 +2284,7 @@ Singer,SIN
 Sittingbourne,SIT
 Skegness,SKG
 Skewen,SKE
+Sgiwen,SKE
 Skipton,SKI
 Slade Green,SGR
 Slaithwaite,SWT
@@ -2076,7 +2295,9 @@ Slough,SLO
 Small Heath,SMA
 Smallbrook Junction,SAB
 Smethwick Galton Bridge,SGB
+Galton Bridge (Smethwick),SGB
 Smethwick Rolfe Street,SMR
+Rolfe Street (Smethwick),SMR
 Smithy Bridge,SMB
 Snaith,SNI
 Snodland,SDA
@@ -2099,8 +2320,10 @@ South Ruislip,SRU
 South Tottenham,STO
 South Wigston,SWS
 South Woodham Ferrers,SOF
+Woodham Ferrers,SOF
 Southall,STL
 Southampton Airport Parkway,SOA
+Southampton Parkway,SOA
 Southampton Central,SOU
 Southbourne,SOB
 Southbury,SBU
@@ -2109,6 +2332,7 @@ Southend Airport,SIA
 Southend Central,SOC
 Southend East,SOE
 Southend Victoria,SOV
+Victoria (Southend),SOV
 Southminster,SMN
 Southport,SOP
 Southwick,SWK
@@ -2129,7 +2353,9 @@ St Annes-on-Sea,SAS
 St Austell,SAU
 St Bees,SBS
 St Budeaux Ferry Road,SBF
+Ferry Road (St Budeaux),SBF
 St Budeaux Victoria Road,SBV
+Victoria Road (St Budeaux),SBV
 St Columb Road,SCR
 St Denys,SDN
 St Erth,SER
@@ -2143,6 +2369,7 @@ St James Street (Walthamstow),SJS
 St Johns (London),SAJ
 St Keyne Wishing Well Halt,SKN
 St Leonards Warrior Square,SLQ
+Warrior Square,SLQ
 St Margarets (Herts),SMT
 St Margarets (London),SMG
 St Mary Cray,SMY
@@ -2156,6 +2383,7 @@ Stamford (Lincs),SMD
 Stamford Hill,SMH
 Stanford-le-Hope,SFO
 Stanlow & Thornton,SNT
+Thornton (Cheshire),SNT
 Stansted Airport,SSD
 Stansted Mountfitchet,SST
 Staplehurst,SPU
@@ -2165,6 +2393,7 @@ Starcross,SCS
 Staveley (Cumbria),SVL
 Stechford,SCF
 Steeton & Silsden,SON
+Silsden,SON
 Stepps,SPS
 Stevenage,SVG
 Stevenston,STV
@@ -2172,6 +2401,7 @@ Stewartby,SWR
 Stewarton,STT
 Stirling,STG
 Stockport,SPT
+Edgeley,SPT
 Stocksfield,SKS
 Stocksmoor,SSM
 Stockton,STK
@@ -2207,6 +2437,7 @@ Stroud (Gloucs),STD
 Sturry,STU
 Styal,SYA
 Sudbury & Harrow Road,SUD
+Harrow Road (Sudbury),SUD
 Sudbury (Suffolk),SUY
 Sudbury Hill Harrow,SDH
 Sugar Loaf,SUG
@@ -2226,6 +2457,7 @@ Swale,SWL
 Swanley,SAY
 Swanscombe,SWM
 Swansea,SWA
+Abertawe,SWA
 Swanwick,SNW
 Sway,SWY
 Swaythling,SWG
@@ -2241,6 +2473,7 @@ Syston,SYS
 Tackley,TAC
 Tadworth,TAD
 Taffs Well,TAF
+Ffynnon Taf,TAF
 Tain,TAI
 Talsarnau,TAL
 Talybont,TLB
@@ -2257,11 +2490,13 @@ Teignmouth,TGM
 Telford Central,TFC
 Templecombe,TMC
 Tenby,TEN
+Dinbych-Y-Pysgod,TEN
 Teynham,TEY
 Thames Ditton,THD
 Thatcham,THA
 Thatto Heath,THH
 The Hawthorns,THW
+Hawthorns,THW
 The Lakes (Warks),TLK
 Theale,THE
 Theobalds Grove,TEO
@@ -2280,6 +2515,7 @@ Thorpe Culvert,TPC
 Thorpe-le-Soken,TLS
 Three Bridges,TBD
 Three Oaks,TOK
+Guestling,TOK
 Thurgarton,THU
 Thurnscoe,THC
 Thurso,THS
@@ -2309,6 +2545,7 @@ Town Green,TWN
 Trafford Park,TRA
 Trefforest,TRF
 Trefforest Estate,TRE
+Ystad Trefforest,TRE
 Trehafod,TRH
 Treherbert,TRB
 Treorchy,TRY
@@ -2323,6 +2560,7 @@ Tulse Hill,TUH
 Tunbridge Wells,TBW
 Turkey Street,TUR
 Tutbury & Hatton,TUT
+Hatton (Derbyshire),TUT
 Tweedbank,TWB
 Twickenham,TWI
 Twyford,TWY
@@ -2330,6 +2568,7 @@ Ty Croes,TYC
 Ty Glas,TGS
 Tygwyn,TYG
 Tyndrum Lower,TYL
+Lower Tyndrum,TYL
 Tyseley,TYS
 Tywyn,TYW
 Uckfield,UCK
@@ -2345,21 +2584,27 @@ Upminster,UPM
 Upper Halliford,UPH
 Upper Holloway,UHL
 Upper Tyndrum,UTY
+Tyndrum Upper,UTY
 Upper Warlingham,UWL
 Upton (Merseyside),UPT
 Upwey,UPW
+Broadwey (Dorset),UPW
 Urmston,URM
 Uttoxeter,UTT
 Valley,VAL
+Y Fali,VAL
 Vauxhall,VXH
 Virginia Water,VIR
 Waddon,WDO
 Wadhurst,WAD
 Wainfleet,WFL
 Wakefield Kirkgate,WKK
+Kirkgate (Wakefield),WKK
 Wakefield Westgate,WKF
+Westgate (Wakefield),WKF
 Walkden,WKD
 Wallasey Grove Road,WLG
+Grove Road (Wallasey),WLG
 Wallasey Village,WLV
 Wallington,WLT
 Wallyford,WAF
@@ -2372,6 +2617,7 @@ Walthamstow Queen's Road,WMW
 Walton (Merseyside),WAO
 Walton-on-Thames,WAL
 Walton-on-the-Naze,WON
+Walton-on-Naze,WON
 Wanborough,WAN
 Wandsworth Common,WSW
 Wandsworth Road,WWR
@@ -2385,7 +2631,9 @@ Wargrave,WGV
 Warminster,WMN
 Warnham,WNH
 Warrington Bank Quay,WBQ
+Bank Quay (Warrington),WBQ
 Warrington Central,WAC
+Warrington West,WAW
 Warwick,WRW
 Warwick Parkway,WRP
 Water Orton,WTO
@@ -2393,12 +2641,15 @@ Waterbeach,WBC
 Wateringbury,WTR
 Waterloo (Merseyside),WLO
 Watford High Street,WFH
+High Street (Watford),WFH
 Watford Junction,WFJ
 Watford North,WFN
 Watlington,WTG
+Magdalen Road,WTG
 Watton-at-Stone,WAS
 Waun-Gron Park,WNG
 Wavertree Technology Park,WAV
+Technology Park(wavertree),WAV
 Wedgwood,WED
 Weeley,WEE
 Weeton,WET
@@ -2406,12 +2657,15 @@ Welham Green,WMG
 Welling,WLI
 Wellingborough,WEL
 Wellington (Shropshire),WLN
+Wellington Telford West,WLN
 Welshpool,WLP
+Y Trallwng,WLP
 Welwyn Garden City,WGC
 Welwyn North,WLW
 Wem,WEM
 Wembley Central,WMB
 Wembley Stadium,WCX
+Wembley Complex,WCX
 Wemyss Bay,WMS
 Wendover,WND
 Wennington,WNN
@@ -2463,11 +2717,13 @@ Whitchurch (Cardiff),WHT
 Whitchurch (Hants),WCH
 Whitchurch (Shropshire),WTC
 White Hart Lane,WHL
+Tottenham Hotspur Fc,WHL
 White Notley,WNY
 Whitechapel,ZLW
 Whitecraigs,WCR
 Whitehaven,WTH
 Whitland,WTL
+Hendy-gwyn Ar Daf,WTL
 Whitley Bridge,WBD
 Whitlocks End,WTE
 Whitstable,WHI
@@ -2480,11 +2736,14 @@ Whyteleafe South,WHS
 Wick,WCK
 Wickford,WIC
 Wickham Market,WCM
+Campsea Ashe,WCM
 Widdrington,WDD
 Widnes,WID
 Widney Manor,WMR
 Wigan North Western,WGN
+North Western (Wigan),WGN
 Wigan Wallgate,WGW
+Wallgate (Wigan),WGW
 Wigton,WGT
 Wildmill,WMI
 Willesden Junction,WIJ
@@ -2501,7 +2760,9 @@ Winchfield,WNF
 Winchmore Hill,WIH
 Windermere,WDM
 Windsor & Eton Central,WNC
+Eton Central,WNC
 Windsor & Eton Riverside,WNR
+Eton Riverside,WNR
 Winnersh,WNS
 Winnersh Triangle,WTI
 Winsford,WSF
@@ -2509,6 +2770,7 @@ Wishaw,WSH
 Witham,WTM
 Witley,WTY
 Witton (West Midlands),WTT
+Aston Villa Fc,WTT
 Wivelsfield,WVF
 Wivenhoe,WIV
 Woburn Sands,WOB
@@ -2531,11 +2793,16 @@ Woodsmoor,WSR
 Wool,WOO
 Woolston,WLS
 Woolwich Arsenal,WWA
+Arsenal (Woolwich),WWA
 Woolwich Dockyard,WWD
+Dockyard (Woolwich),WWD
 Wootton Wawen,WWW
 Worcester Foregate Street,WOF
+Foregate Street(worcester),WOF
 Worcester Park,WCP
 Worcester Shrub Hill,WOS
+Shrub Hill (Worcester),WOS
+Worcestershire Parkway,WOP
 Workington,WKG
 Worksop,WRK
 Worle,WOR
@@ -2547,11 +2814,14 @@ Wraysbury,WRY
 Wrenbury,WRE
 Wressle,WRS
 Wrexham Central,WXC
+Wrecsam Canolog,WXC
 Wrexham General,WRX
+Cyffredinol Wrecsam,WRX
 Wye,WYE
 Wylam,WYM
 Wylde Green,WYL
 Wymondham,WMD
+Windham,WMD
 Wythall,WYT
 Yalding,YAL
 Yardley Wood,YRD
@@ -2561,6 +2831,7 @@ Yatton,YAT
 Yeoford,YEO
 Yeovil Junction,YVJ
 Yeovil Pen Mill,YVP
+Pen Mill (Yeovil),YVP
 Yetminster,YET
 Ynyswen,YNW
 Yoker,YOK

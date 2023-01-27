@@ -30,7 +30,7 @@ namespace DepartureBoard
 		static MenuItem _switchMenu;
 		static MenuItem _allDestinationMenu;
 		static ColorScheme _currentColourScheme = Colors.Base;
-		static Border _border = new Border() { Effect3D = false, BorderStyle = BorderStyle.Single };
+		static readonly Border _border = new Border() { Effect3D = false, BorderStyle = BorderStyle.Single };
 
 		static void Main(string[] args)
 		{
@@ -99,7 +99,6 @@ namespace DepartureBoard
 			{
 				if (e.KeyEvent.Key == Key.F5)
 					GetBoard();
-
 			};
 			Application.Top.Add(_menuBar, _mainWindow);
 
@@ -156,14 +155,14 @@ namespace DepartureBoard
 		{
 			string all = $"<{_allDestinations}>";
 
-			var list = title.StartsWith("To ") ? _stationList.Keys.Prepend(all).Select(x => ustring.Make(x)).ToList() : _stationList.Keys.Select(x => ustring.Make(x)).ToList();
+			var list = title.StartsWith("To ") ? _stationList.Keys.Prepend(all).Select(ustring.Make).ToList() : _stationList.Keys.Select(ustring.Make).ToList();
 
 			var stationSearch = new ComboBox() { Width = Dim.Fill(), Height = Dim.Fill() };
 			stationSearch.SetSource(list);
 			stationSearch.OpenSelectedItem += (ListViewItemEventArgs _) => Application.RequestStop();
 
 			var dialog = new Dialog() { Title = title, Width = Dim.Percent(40), Height = Dim.Percent(50), ColorScheme = _currentColourScheme };
-			dialog.Border = _border;
+			//dialog.Border = _border; // Bug? Cannot switch-off 3D. Lose title when set
 			dialog.Add(stationSearch);
 			Application.Run(dialog);
 
@@ -181,9 +180,7 @@ namespace DepartureBoard
 			if (_toStationCode == null) // cannot switch to from "All Destiations"
 				return;
 
-			var temp = _fromStationCode;
-			_fromStationCode = _toStationCode;
-			_toStationCode = temp;
+			(_toStationCode, _fromStationCode) = (_fromStationCode, _toStationCode);
 			GetBoard();
 		}
 
@@ -196,14 +193,14 @@ namespace DepartureBoard
 		static void About()
 		{
 			var ok = new Button("Ok", is_default: true) { ColorScheme = _currentColourScheme };
-			ok.Clicked += () => Application.RequestStop(); 
+			ok.Clicked += () => Application.RequestStop();
 
-			var d = new Dialog("About", 36, 10, ok);
+			var d = new Dialog("About", 36, 8, ok);
 			d.Border = _border;
 			d.Add(
-				new Label($"Live DepartureBoard") { X = 0, Y = 1, Width = Dim.Fill(), TextAlignment = TextAlignment.Centered },
-				new Label($"Version {Assembly.GetEntryAssembly().GetName().Version}") { X = 0, Y = 2, Width = Dim.Fill(), TextAlignment = TextAlignment.Centered },
-				new Label($"{Environment.OSVersion.VersionString}") { X = 0, Y = 3, Width = Dim.Fill(), TextAlignment = TextAlignment.Centered }
+				new Label($"Live DepartureBoard {Assembly.GetEntryAssembly().GetName().Version}") { X = 0, Y = 1, Width = Dim.Fill(), TextAlignment = TextAlignment.Centered },
+				new Label($"{Environment.OSVersion.VersionString}") { X = 0, Y = 2, Width = Dim.Fill(), TextAlignment = TextAlignment.Centered },
+				new Label($"DotNet {Environment.Version}") { X = 0, Y = 3, Width = Dim.Fill(), TextAlignment = TextAlignment.Centered }
 			);
 
 			Application.Run(d);
