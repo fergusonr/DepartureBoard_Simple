@@ -7,8 +7,9 @@ using Microsoft.Extensions.Configuration;
 using System.ServiceModel.Channels;
 using System.Collections.Generic;
 using Terminal.Gui;
-using NStack;
 using LDB;
+using System.Diagnostics;
+using ConfigurationManager = Terminal.Gui.ConfigurationManager;
 
 namespace DepartureBoard
 {
@@ -29,14 +30,15 @@ namespace DepartureBoard
 		const string _allDestinations = "all destinations";
 		static MenuItem _switchMenu;
 		static MenuItem _allDestinationMenu;
-		static ColorScheme _currentColourScheme = Colors.Base;
-		static readonly Border _border = new Border() { Effect3D = false, BorderStyle = BorderStyle.Single };
+		const LineStyle _line = LineStyle.Single;
 
 		static void Main(string[] args)
 		{
-			// Init Terminal.Gui
 			Application.Init();
-			Application.MainLoop.AddTimeout(TimeSpan.FromMinutes(5), Refresh);
+
+			Debug.WriteLine($"*** Themes({ConfigurationManager.Themes.Count}): {string.Join(',', ConfigurationManager.Themes.Keys)}");
+
+			Application.AddTimeout(TimeSpan.FromMinutes(5), Refresh);
 
 #if !TEST
 			// token from command line?
@@ -48,7 +50,7 @@ namespace DepartureBoard
 
 			if (!Guid.TryParse(_token.TokenValue, out Guid dummy))
 			{
-				MessageBox.ErrorQuery(80, 7, "Error", $"Invalid token:- {_token.TokenValue}", 0, _border, "Quit");
+				MessageBox.ErrorQuery(80, 7, "Error", $"Invalid token:- {_token.TokenValue}", 0, "Quit");
 				Application.Shutdown();
 				return;
 			}
@@ -65,39 +67,43 @@ namespace DepartureBoard
 			}
 
 			// menu bar
-			_menuBar = new MenuBar(new MenuBarItem[]
+			var themesMenu = new MenuItem[ConfigurationManager.Themes.Count];
+
+			int i = 0;
+			foreach (var theme in ConfigurationManager.Themes.Keys)
+				themesMenu[i++] = new MenuItem(theme, "", () => SetColorScheme(theme));
+
+			_menuBar = new MenuBar()
 			{
-				new MenuBarItem ("_File", new MenuItem []
+				Menus = new MenuBarItem[]
+			{
+				new MenuBarItem("_File", new MenuItem[]
 				{
-					new MenuItem ("_New", "", New),
-					new MenuItem ("_Quit", "", () => { if (Quit()) Application.Top.Running = false; })
+					new MenuItem("_New", "", New),
+					new MenuItem("_Quit", "", () => { if (Quit()) Application.Top.Running = false; })
 				}),
-				new MenuBarItem ("_Options", new MenuItem []
+				new MenuBarItem("_Options", new MenuItem[]
 				{
-					new MenuItem ("_Refresh", "", GetBoard),
-					new MenuBarItem ("_Switch", new MenuItem[]
+					new MenuItem("_Refresh", "", GetBoard),
+					new MenuBarItem("_Switch", new MenuItem[]
 					{
-						_switchMenu = new MenuItem ("#swap#", "", Switch),
-						_allDestinationMenu = new MenuItem ("#alldest#", "", AllDestinations)
+						_switchMenu = new MenuItem("#swap#", "", Switch),
+						_allDestinationMenu = new MenuItem("#alldest#", "", AllDestinations)
 					}),
-					new MenuBarItem ("Co_lour", new MenuItem[]
-					{
-						new MenuItem ("Standard", "", ColourStandard),
-						new MenuItem ("Black/Yellow", "", () => SetColorScheme(Color.Black, Color.BrightYellow)),
-						new MenuItem ("Black/Green", "", () => SetColorScheme(Color.Black, Color.BrightGreen)),
-					})
+					new MenuBarItem("_Theme", themesMenu)
 				}),
-				new MenuBarItem ("_Help", new MenuItem []
+				new MenuBarItem("_Help", new MenuItem[]
 				{
-					new MenuItem ("_About", "", About)
+					new MenuItem("_About", "", About)
 				})
-			});
+			}};
+			
 
 			// main window
-			_mainWindow = new Window("Departures") { X = 0,	Y = Pos.Bottom(_menuBar), Width = Dim.Fill(), Height = Dim.Fill()};
-			_mainWindow.KeyDown += (View.KeyEventEventArgs e) =>
+			_mainWindow = new Window() { Title = "Departures",  X = 0,	Y = Pos.Bottom(_menuBar), Width = Dim.Fill(), Height = Dim.Fill(), BorderStyle = _line };
+			_mainWindow.KeyDown += (object sender, Key e) =>
 			{
-				if (e.KeyEvent.Key == Key.F5)
+				if (e.KeyCode == Key.F5)
 					GetBoard();
 			};
 			Application.Top.Add(_menuBar, _mainWindow);
@@ -112,7 +118,7 @@ namespace DepartureBoard
 			_mainWindow.Add(_displayDetails);
 
 			// messages
-			var viewMessage = new FrameView("Messages") { X = 0, Y = Pos.Bottom(_displayDetails)+1, Width = Dim.Fill(), Height = Dim.Fill() };
+			var viewMessage = new FrameView() { Title = "Messages", X = 0, Y = Pos.Bottom(_displayDetails)+1, Width = Dim.Fill(), Height = Dim.Fill(), BorderStyle = _line };
 			_displayMessages = new ListView() { X = 0, Y = 0, Width = Dim.Fill(), Height = Dim.Fill() };
 			viewMessage.Add(_displayMessages);
 			viewMessage.TabStop = false; // needs to happen after control added?!?
@@ -125,14 +131,14 @@ namespace DepartureBoard
 				_toStationCode = args[1] == "ALL" ? null : args[1];
 
 				if(!_stationList.ContainsValue(_fromStationCode))
-					MessageBox.ErrorQuery(80, 7, "Error", $"Invalid 'from' station code:- {_fromStationCode}", 0, _border, "Continue");
+					MessageBox.ErrorQuery(80, 7, "Error", $"Invalid 'from' station code:- {_fromStationCode}", 0, "Continue");
 				else if(!_stationList.ContainsValue(_toStationCode) && _toStationCode != null)
-					MessageBox.ErrorQuery(80, 7, "Error", $"Invalid 'to' station code:- {_toStationCode}", 0, _border, "Continue");
+					MessageBox.ErrorQuery(80, 7, "Error", $"Invalid 'to' station code:- {_toStationCode}", 0, "Continue");
 				else
-					Application.MainLoop.Invoke(GetBoard);
+					Application.Invoke(GetBoard);
 			}
 			else
-				Application.MainLoop.Invoke(New);
+				Application.Invoke(New);
 
 			Application.Run();
 			Application.Shutdown();
@@ -155,14 +161,13 @@ namespace DepartureBoard
 		{
 			string all = $"<{_allDestinations}>";
 
-			var list = title.StartsWith("To ") ? _stationList.Keys.Prepend(all).Select(ustring.Make).ToList() : _stationList.Keys.Select(ustring.Make).ToList();
+			var list = title.StartsWith("To ") ? _stationList.Keys.Prepend(all).ToList() : _stationList.Keys.ToList();
 
 			var stationSearch = new ComboBox() { Width = Dim.Fill(), Height = Dim.Fill() };
 			stationSearch.SetSource(list);
-			stationSearch.OpenSelectedItem += (ListViewItemEventArgs _) => Application.RequestStop();
+			stationSearch.OpenSelectedItem += (object sender, ListViewItemEventArgs e) => Application.RequestStop();
 
-			var dialog = new Dialog() { Title = title, Width = Dim.Percent(40), Height = Dim.Percent(50), ColorScheme = _currentColourScheme };
-			//dialog.Border = _border; // Bug? Cannot switch-off 3D. Lose title when set
+			var dialog = new Dialog() { Title = title, Width = Dim.Percent(40), Height = Dim.Percent(50) };
 			dialog.Add(stationSearch);
 			Application.Run(dialog);
 
@@ -172,7 +177,7 @@ namespace DepartureBoard
 			if (stationSearch.Text == string.Empty)
 				return string.Empty;
 
-			return _stationList[stationSearch.Text.ToString()];
+			return _stationList[stationSearch.Text];
 		}
 
 		static void Switch()
@@ -184,7 +189,7 @@ namespace DepartureBoard
 			GetBoard();
 		}
 
-		private static void AllDestinations()
+		static void AllDestinations()
 		{
 			_toStationCode = null;
 			GetBoard();
@@ -192,15 +197,17 @@ namespace DepartureBoard
 
 		static void About()
 		{
-			var ok = new Button("Ok", is_default: true) { ColorScheme = _currentColourScheme };
-			ok.Clicked += () => Application.RequestStop();
+			var ok = new Button() { Text = "Ok", IsDefault = true };
 
-			var d = new Dialog("About", 36, 8, ok);
-			d.Border = _border;
+			ok.MouseClick += (object sender, MouseEventEventArgs e) => Application.RequestStop();
+
+			var d = new Dialog() { Title = "About", Width = 36, Height = 8, BorderStyle = _line };
+			d.AddButton(ok);
+
 			d.Add(
-				new Label($"Live DepartureBoard {Assembly.GetEntryAssembly().GetName().Version}") { X = 0, Y = 1, Width = Dim.Fill(), TextAlignment = TextAlignment.Centered },
-				new Label($"{Environment.OSVersion.VersionString}") { X = 0, Y = 2, Width = Dim.Fill(), TextAlignment = TextAlignment.Centered },
-				new Label($"DotNet {Environment.Version}") { X = 0, Y = 3, Width = Dim.Fill(), TextAlignment = TextAlignment.Centered }
+				new Label() { Text = $"Live DepartureBoard {Assembly.GetEntryAssembly().GetName().Version}",  X = 0, Y = 1, Width = Dim.Fill(), TextAlignment = TextAlignment.Centered },
+				new Label() { Text = $"{Environment.OSVersion.VersionString}", X = 0, Y = 2, Width = Dim.Fill(), TextAlignment = TextAlignment.Centered },
+				new Label() { Text = $"DotNet {Environment.Version}", X = 0, Y = 3, Width = Dim.Fill(), TextAlignment = TextAlignment.Centered }
 			);
 
 			Application.Run(d);
@@ -208,41 +215,29 @@ namespace DepartureBoard
 
 		static bool Quit()
 		{
-			return MessageBox.Query(50, 7, "Quit?", "Are you sure you want to quit?", 0, _border, "Yes", "No") == 0;
+			return MessageBox.Query(50, 7, "Quit?", "Are you sure you want to quit?", 0, "Yes", "No") == 0;
 		}
 
-		static bool Refresh(MainLoop arg)
+		static bool Refresh()
 		{
 			GetBoard();
 			return true; // keep ticking
 		}
 
-		private static void ColourStandard()
+		static void SetColorScheme(string name)
 		{
-			_currentColourScheme = _menuBar.ColorScheme = _mainWindow.ColorScheme = Colors.Base;
+			ConfigurationManager.Themes.Theme = name;
+			ConfigurationManager.Apply();
+
 			_mainWindow.SetNeedsDisplay();
-			_menuBar.SetNeedsDisplay();
 		}
 
-		private static void SetColorScheme(Color back, Color fore)
-		{
-			var colour = Application.Driver.MakeAttribute(fore, back);
-			_currentColourScheme = _menuBar.ColorScheme = _mainWindow.ColorScheme = new ColorScheme()
-			{
-				Normal = colour,
-				HotNormal = colour,
-				Focus = Application.Driver.MakeAttribute(fore, Color.DarkGray)
-			};
-			_mainWindow.SetNeedsDisplay();
-			_menuBar.SetNeedsDisplay();
-		}
-
-		internal static void GetBoard()
+		static void GetBoard()
 		{
 			// Cannot use listview.Clear();
-			_displayBoard.SetSource(new List<string>());
-			_displayDetails.SetSource(new List<string>());
-			_displayMessages.SetSource(new List<string>());
+			_displayBoard.SetSource(Array.Empty<string>());
+			_displayDetails.SetSource(Array.Empty<string>());
+			_displayMessages.SetSource(Array.Empty<string>());
 			_displayBoard.SetFocus();
 			_rsids?.Clear();
 
@@ -259,11 +254,11 @@ namespace DepartureBoard
 			var time = DateTime.Now;
 			for (int i = 0; i < board.trainServices.Length; i++)
 			{
-				board.trainServices[i] = new ServiceItem2 
+				board.trainServices[i] = new ServiceItem2
 				{
-					std = time.ToString("hh:mm"), 
-					destination = new ServiceLocation[] { new ServiceLocation { locationName = board.filterLocationName } }, 
-					platform = "1", 
+					std = time.ToString("hh:mm"),
+					destination = new ServiceLocation[] { new ServiceLocation { locationName = board.filterLocationName } },
+					platform = "1",
 					etd = "On time",
 					@operator = "Southeatern",
 					serviceID = "1234"
@@ -278,7 +273,7 @@ namespace DepartureBoard
 			}
 			catch (Exception e)
 			{
-				MessageBox.ErrorQuery(78, 10, "Error", e.Message, 0, _border, "Continue");
+				MessageBox.ErrorQuery(78, 10, "Error", e.Message, 0, "Continue");
 				return;
 			}
 
@@ -297,6 +292,8 @@ namespace DepartureBoard
 				return;
 
 			_displayBoard.SetSource(board.trainServices.Select(x => $"{x.std} {x.destination[0].locationName,-25} {x.platform,-4} {x.etd,-10} {x.@operator}").ToList());
+			_displayBoard.SelectedItem = 0;
+
 			_rsids = board.trainServices.Select(x => x.serviceID).ToList();
 
 			if (board.nrccMessages == null)
@@ -305,7 +302,7 @@ namespace DepartureBoard
 			_displayMessages.SetSource(board.nrccMessages.Select(x => HttpUtility.HtmlDecode( x.Value)).ToList());
 		}
 
-		static void GetDetialsBoard(ListViewItemEventArgs args)
+		static void GetDetialsBoard(object sender, ListViewItemEventArgs e)
 		{
 			if (_rsids == null || _rsids.Count == 0) // fired before GetBoard called
 				return;
@@ -331,13 +328,14 @@ namespace DepartureBoard
 			{
 				details = _client.GetServiceDetails(_token, serviceId);
 			}
-			catch (Exception e)
+			catch (Exception ex)
 			{
-				_displayMessages.SetSource(new List<string> { e.Message });
+				_displayMessages.SetSource(new List<string> { ex.Message });
 				return;
 			}
 #endif
 			_displayDetails.SetSource(details.subsequentCallingPoints[0].callingPoint.Select(x => $"{x.st} {x.locationName,-25}      {x.et,-10}").ToList());
+			_displayDetails.SelectedItem = 0;
 		}
 
 #if TEST
@@ -349,11 +347,9 @@ namespace DepartureBoard
 			};
 
 			var time = DateTime.Now;
-			for (int i = 0; i < callingPoints.Length; i++)
-			{
+			for (int i = 0; i < callingPoints.Length; i++, time = time.AddMinutes(4))
 				data[0].callingPoint[i] = new CallingPoint1 { st = time.ToString("hh:mm"), locationName = callingPoints[i], et = "On time" };
-				time = time.AddMinutes(4);
-			}
+
 			return data;
 		}
 #endif

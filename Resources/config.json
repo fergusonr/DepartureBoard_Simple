@@ -1,0 +1,71 @@
+﻿{
+  "Themes": [
+    {
+      "Black/Green": {
+        "ColorSchemes": [
+          {
+            "Base": {
+              "Normal": {
+                "Foreground": "BrightGreen",
+                "Background": "Black"
+              },
+              "Focus": {
+                "Foreground": "White",
+                "Background": "Cyan"
+
+              },
+              "HotNormal": {
+                "Foreground": "Yellow",
+                "Background": "Black"
+              },
+              "HotFocus": {
+                "Foreground": "Blue",
+                "Background": "Cyan"
+              },
+              "Disabled": {
+                "Foreground": "DarkGray",
+                "Background": "Black"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "Black/Yellow": {
+        "ColorSchemes": [
+          {
+            "Base": {
+              "Normal": {
+                "Foreground": "BrightYellow",
+                "Background": "Black"
+              },
+              "Focus": {
+                "Foreground": "White",
+                "Background": "Cyan"
+
+              },
+              "HotNormal": {
+                "Foreground": "Yellow",
+                "Background": "Black"
+              },
+              "HotFocus": {
+                "Foreground": "Blue",
+                "Background": "Cyan"
+              },
+              "Disabled": {
+                "Foreground": "DarkGray",
+                "Background": "Black"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+  
+
+
+
+
