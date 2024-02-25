@@ -30,7 +30,6 @@ namespace DepartureBoard
 		const string _allDestinations = "all destinations";
 		static MenuItem _switchMenu;
 		static MenuItem _allDestinationMenu;
-		const LineStyle _line = LineStyle.Single;
 
 		static void Main(string[] args)
 		{
@@ -100,7 +99,7 @@ namespace DepartureBoard
 			
 
 			// main window
-			_mainWindow = new Window() { Title = "Departures",  X = 0,	Y = Pos.Bottom(_menuBar), Width = Dim.Fill(), Height = Dim.Fill(), BorderStyle = _line };
+			_mainWindow = new Window() { Title = "Departures",  X = 0,	Y = Pos.Bottom(_menuBar), Width = Dim.Fill(), Height = Dim.Fill(), BorderStyle = LineStyle.Single };
 			_mainWindow.KeyDown += (object sender, Key e) =>
 			{
 				if (e.KeyCode == Key.F5)
@@ -118,7 +117,7 @@ namespace DepartureBoard
 			_mainWindow.Add(_displayDetails);
 
 			// messages
-			var viewMessage = new FrameView() { Title = "Messages", X = 0, Y = Pos.Bottom(_displayDetails)+1, Width = Dim.Fill(), Height = Dim.Fill(), BorderStyle = _line };
+			var viewMessage = new FrameView() { Title = "Messages", X = 0, Y = Pos.Bottom(_displayDetails)+1, Width = Dim.Fill(), Height = Dim.Fill(), BorderStyle = LineStyle.Single };
 			_displayMessages = new ListView() { X = 0, Y = 0, Width = Dim.Fill(), Height = Dim.Fill() };
 			viewMessage.Add(_displayMessages);
 			viewMessage.TabStop = false; // needs to happen after control added?!?
@@ -201,7 +200,7 @@ namespace DepartureBoard
 
 			ok.MouseClick += (object sender, MouseEventEventArgs e) => Application.RequestStop();
 
-			var d = new Dialog() { Title = "About", Width = 36, Height = 8, BorderStyle = _line };
+			var d = new Dialog() { Title = "About", Width = 36, Height = 8, BorderStyle = LineStyle.Single };
 			d.AddButton(ok);
 
 			d.Add(
