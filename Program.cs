@@ -6,10 +6,11 @@ using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using System.ServiceModel.Channels;
 using System.Collections.Generic;
+using System.ComponentModel;
+
 using Terminal.Gui;
-using LDB;
-using System.Diagnostics;
 using ConfigurationManager = Terminal.Gui.ConfigurationManager;
+using LDB;
 
 namespace DepartureBoard
 {
@@ -34,9 +35,6 @@ namespace DepartureBoard
 		static void Main(string[] args)
 		{
 			Application.Init();
-
-			Debug.WriteLine($"*** Themes({ConfigurationManager.Themes.Count}): {string.Join(',', ConfigurationManager.Themes.Keys)}");
-
 			Application.AddTimeout(TimeSpan.FromMinutes(5), Refresh);
 
 #if !TEST
@@ -96,7 +94,6 @@ namespace DepartureBoard
 					new MenuItem("_About", "", About)
 				})
 			}};
-			
 
 			// main window
 			_mainWindow = new Window() { Title = "Departures",  X = 0,	Y = Pos.Bottom(_menuBar), Width = Dim.Fill(), Height = Dim.Fill(), BorderStyle = LineStyle.Single };
@@ -197,19 +194,18 @@ namespace DepartureBoard
 		static void About()
 		{
 			var ok = new Button() { Text = "Ok", IsDefault = true };
+			ok.Accept += (object sender, CancelEventArgs e) => Application.RequestStop();
 
-			ok.MouseClick += (object sender, MouseEventEventArgs e) => Application.RequestStop();
+			var about = new Dialog() { Title = "About", Width = 36, Height = 8, BorderStyle = LineStyle.Single };
+			about.AddButton(ok);
 
-			var d = new Dialog() { Title = "About", Width = 36, Height = 8, BorderStyle = LineStyle.Single };
-			d.AddButton(ok);
-
-			d.Add(
-				new Label() { Text = $"Live DepartureBoard {Assembly.GetEntryAssembly().GetName().Version}",  X = 0, Y = 1, Width = Dim.Fill(), TextAlignment = TextAlignment.Centered },
-				new Label() { Text = $"{Environment.OSVersion.VersionString}", X = 0, Y = 2, Width = Dim.Fill(), TextAlignment = TextAlignment.Centered },
-				new Label() { Text = $"DotNet {Environment.Version}", X = 0, Y = 3, Width = Dim.Fill(), TextAlignment = TextAlignment.Centered }
+			about.Add(
+				new Label() { Text = $"Live DepartureBoard {Assembly.GetEntryAssembly().GetName().Version}", AutoSize = false, Width = Dim.Fill(), Y = 1, TextAlignment = TextAlignment.Centered },
+				new Label() { Text = $"{Environment.OSVersion.VersionString}",								 AutoSize = false, Width = Dim.Fill(), Y = 2, TextAlignment = TextAlignment.Centered },
+				new Label() { Text = $"DotNet {Environment.Version}",										 AutoSize = false, Width = Dim.Fill(), Y = 3, TextAlignment = TextAlignment.Centered }
 			);
 
-			Application.Run(d);
+			Application.Run(about);
 		}
 
 		static bool Quit()
