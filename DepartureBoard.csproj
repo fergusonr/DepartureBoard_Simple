@@ -39,7 +39,7 @@
     <PackageReference Include="System.ServiceModel.Http" Version="8.0.0" />
     <PackageReference Include="System.ServiceModel.NetTcp" Version="8.0.0" />
     <PackageReference Include="System.ServiceModel.Security" Version="6.0.0" />
-    <PackageReference Include="Terminal.Gui" Version="2.0.0-pre.296" />
+    <PackageReference Include="Terminal.Gui" Version="2.0.0-pre.445" />
   </ItemGroup>
 
   <ItemGroup>
