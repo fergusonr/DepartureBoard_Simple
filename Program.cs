@@ -43,7 +43,7 @@ namespace DepartureBoard
 
 			// appsetting
 			var config = new ConfigurationBuilder().AddJsonFile("appSettings.json").Build();
-			_token.TokenValue = token ?? config["token"] ?? "Null";
+			_token.TokenValue = token ?? config["token"];
 
 			if (!Guid.TryParse(_token.TokenValue, out Guid dummy))
 			{
@@ -102,7 +102,9 @@ namespace DepartureBoard
 				if (e.KeyCode == Key.F5)
 					GetBoard();
 			};
-			Application.Top.Add(_menuBar, _mainWindow);
+
+			var top = new Toplevel();
+			top.Add(_menuBar, _mainWindow);
 
 			// Main board
 			_displayBoard = new ListView() { X = 0, Y = 0, Width = Dim.Fill(), Height = Dim.Percent(50) };
@@ -136,7 +138,7 @@ namespace DepartureBoard
 			else
 				Application.Invoke(New);
 
-			Application.Run();
+			Application.Run(top);
 			Application.Shutdown();
 		}
 
@@ -200,9 +202,9 @@ namespace DepartureBoard
 			about.AddButton(ok);
 
 			about.Add(
-				new Label() { Text = $"Live DepartureBoard {Assembly.GetEntryAssembly().GetName().Version}", AutoSize = false, Width = Dim.Fill(), Y = 1, TextAlignment = TextAlignment.Centered },
-				new Label() { Text = $"{Environment.OSVersion.VersionString}",								 AutoSize = false, Width = Dim.Fill(), Y = 2, TextAlignment = TextAlignment.Centered },
-				new Label() { Text = $"DotNet {Environment.Version}",										 AutoSize = false, Width = Dim.Fill(), Y = 3, TextAlignment = TextAlignment.Centered }
+				new Label() { Text = $"Live DepartureBoard {Assembly.GetEntryAssembly().GetName().Version}",  Width = Dim.Fill(), Y = 1, TextAlignment = Alignment.Center },
+				new Label() { Text = $"{Environment.OSVersion.VersionString}",								  Width = Dim.Fill(), Y = 2, TextAlignment = Alignment.Center },
+				new Label() { Text = $"DotNet {Environment.Version}",										  Width = Dim.Fill(), Y = 3, TextAlignment = Alignment.Center }
 			);
 
 			Application.Run(about);
