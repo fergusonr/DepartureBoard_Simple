@@ -6,6 +6,7 @@ using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using System.ServiceModel.Channels;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 using Terminal.Gui;
@@ -119,7 +120,7 @@ namespace DepartureBoard
 			var viewMessage = new FrameView() { Title = "Messages", X = 0, Y = Pos.Bottom(_displayDetails)+1, Width = Dim.Fill(), Height = Dim.Fill(), BorderStyle = LineStyle.Single };
 			_displayMessages = new ListView() { X = 0, Y = 0, Width = Dim.Fill(), Height = Dim.Fill() };
 			viewMessage.Add(_displayMessages);
-			viewMessage.TabStop = false; // needs to happen after control added?!?
+			viewMessage.TabStop = TabBehavior.NoStop; // needs to happen after control added?!?
 			_mainWindow.Add(viewMessage);
 
 			// Run
@@ -157,25 +158,31 @@ namespace DepartureBoard
 
 		static string SelectStation(string title)
 		{
-			string all = $"<{_allDestinations}>";
+			const string all = $"<{_allDestinations}>";
 
 			var list = title.StartsWith("To ") ? _stationList.Keys.Prepend(all).ToList() : _stationList.Keys.ToList();
 
 			var stationSearch = new ComboBox() { Width = Dim.Fill(), Height = Dim.Fill() };
-			stationSearch.SetSource(list);
-			stationSearch.OpenSelectedItem += (object sender, ListViewItemEventArgs e) => Application.RequestStop();
+			stationSearch.SetSource(new ObservableCollection<string>(list));
+
+			string selected = null;
+			stationSearch.OpenSelectedItem += (object sender, ListViewItemEventArgs e) =>
+			{
+				selected = e.Value.ToString();
+				Application.RequestStop();
+			};
 
 			var dialog = new Dialog() { Title = title, Width = Dim.Percent(40), Height = Dim.Percent(50) };
 			dialog.Add(stationSearch);
 			Application.Run(dialog);
 
-			if (stationSearch.Text == all)
+			if (selected == all)
 				return null;
 
-			if (stationSearch.Text == string.Empty)
+			if (selected == null) // dialog cancelled
 				return string.Empty;
 
-			return _stationList[stationSearch.Text];
+			return _stationList[selected];
 		}
 
 		static void Switch()
@@ -196,7 +203,7 @@ namespace DepartureBoard
 		static void About()
 		{
 			var ok = new Button() { Text = "Ok", IsDefault = true };
-			ok.Accept += (object sender, CancelEventArgs e) => Application.RequestStop();
+			ok.Accept += (object sender, HandledEventArgs e) => Application.RequestStop();
 
 			var about = new Dialog() { Title = "About", Width = 36, Height = 8, BorderStyle = LineStyle.Single };
 			about.AddButton(ok);
@@ -231,10 +238,9 @@ namespace DepartureBoard
 
 		static void GetBoard()
 		{
-			// Cannot use listview.Clear();
-			_displayBoard.SetSource(Array.Empty<string>());
-			_displayDetails.SetSource(Array.Empty<string>());
-			_displayMessages.SetSource(Array.Empty<string>());
+			_displayBoard.Source = null;
+			_displayDetails.Source = null;
+			_displayMessages.Source = null;
 			_displayBoard.SetFocus();
 			_rsids?.Clear();
 
@@ -288,7 +294,7 @@ namespace DepartureBoard
 			if (board.trainServices == null)
 				return;
 
-			_displayBoard.SetSource(board.trainServices.Select(x => $"{x.std} {x.destination[0].locationName,-25} {x.platform,-4} {x.etd,-10} {x.@operator}").ToList());
+			_displayBoard.SetSource(new ObservableCollection<string>(board.trainServices.Select(x => $"{x.std} {x.destination[0].locationName,-25} {x.platform,-4} {x.etd,-10} {x.@operator}").ToList()));
 			_displayBoard.SelectedItem = 0;
 
 			_rsids = board.trainServices.Select(x => x.serviceID).ToList();
@@ -296,7 +302,7 @@ namespace DepartureBoard
 			if (board.nrccMessages == null)
 				return;
 
-			_displayMessages.SetSource(board.nrccMessages.Select(x => HttpUtility.HtmlDecode( x.Value)).ToList());
+			_displayMessages.SetSource(new ObservableCollection<string>(board.nrccMessages.Select(x => HttpUtility.HtmlDecode( x.Value)).ToList()));
 		}
 
 		static void GetDetialsBoard(object sender, ListViewItemEventArgs e)
@@ -327,11 +333,11 @@ namespace DepartureBoard
 			}
 			catch (Exception ex)
 			{
-				_displayMessages.SetSource(new List<string> { ex.Message });
+				_displayMessages.SetSource(new ObservableCollection<string>(new List<string> { ex.Message }));
 				return;
 			}
 #endif
-			_displayDetails.SetSource(details.subsequentCallingPoints[0].callingPoint.Select(x => $"{x.st} {x.locationName,-25}      {x.et,-10}").ToList());
+			_displayDetails.SetSource(new ObservableCollection<string>(details.subsequentCallingPoints[0].callingPoint.Select(x => $"{x.st} {x.locationName,-25}      {x.et,-10}").ToList()));
 			_displayDetails.SelectedItem = 0;
 		}
 

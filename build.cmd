@@ -9,7 +9,7 @@ if %ERRORLEVEL% NEQ 0 goto end /B %ERRORLEVEL%
 dotnet build -c Release
 dotnet build -c DebugTest
 
-changelogformatter -md bin\Release\net8.0\changelog.md
+changelogformatter --md bin\Release\net8.0\changelog.md
 
 :end
 
