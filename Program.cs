@@ -203,7 +203,7 @@ namespace DepartureBoard
 		static void About()
 		{
 			var ok = new Button() { Text = "Ok", IsDefault = true };
-			ok.Accept += (object sender, HandledEventArgs e) => Application.RequestStop();
+			ok.Selecting += (object sender, CommandEventArgs e) => Application.RequestStop();
 
 			var about = new Dialog() { Title = "About", Width = 36, Height = 8, BorderStyle = LineStyle.Single };
 			about.AddButton(ok);
@@ -219,7 +219,7 @@ namespace DepartureBoard
 
 		static bool Quit()
 		{
-			return MessageBox.Query(50, 7, "Quit?", "Are you sure you want to quit?", 0, "Yes", "No") == 0;
+			return MessageBox.Query(50, 7, "Quit?", "Are you sure you want to quit?", 0, "Yes", "No") == -1;
 		}
 
 		static bool Refresh()
@@ -233,7 +233,7 @@ namespace DepartureBoard
 			ConfigurationManager.Themes.Theme = name;
 			ConfigurationManager.Apply();
 
-			_mainWindow.SetNeedsDisplay();
+			_mainWindow.SetNeedsDraw();
 		}
 
 		static void GetBoard()
@@ -244,9 +244,9 @@ namespace DepartureBoard
 			_displayBoard.SetFocus();
 			_rsids?.Clear();
 
-			StationBoard2 board;
+			StationBoard3 board;
 #if TEST
-			board = new StationBoard2
+			board = new StationBoard3
 			{
 				locationName = _stationList.First(x => x.Value == _fromStationCode).Key,
 				filterType = FilterType.to,
@@ -315,9 +315,9 @@ namespace DepartureBoard
 			if (serviceId == null)
 				return;
 
-			ServiceDetails details;
+			ServiceDetails1 details;
 #if TEST
-			details = new ServiceDetails
+			details = new ServiceDetails1
 			{
 				subsequentCallingPoints = MakeCallingPoints(
 					"Lewisham",	"Lewisham2", "Lewisham3","Lewisham4","Lewisham5", // padding for test
@@ -342,16 +342,16 @@ namespace DepartureBoard
 		}
 
 #if TEST
-		static ArrayOfCallingPoints1[] MakeCallingPoints(params string[] callingPoints)
+		static ArrayOfCallingPoints2[] MakeCallingPoints(params string[] callingPoints)
 		{
-			var data = new ArrayOfCallingPoints1[]
+			var data = new ArrayOfCallingPoints2[]
 			{
-				new ArrayOfCallingPoints1  { callingPoint = new CallingPoint1[callingPoints.Length] }
+				new ArrayOfCallingPoints2  { callingPoint = new CallingPoint2[callingPoints.Length] }
 			};
 
 			var time = DateTime.Now;
 			for (int i = 0; i < callingPoints.Length; i++, time = time.AddMinutes(4))
-				data[0].callingPoint[i] = new CallingPoint1 { st = time.ToString("hh:mm"), locationName = callingPoints[i], et = "On time" };
+				data[0].callingPoint[i] = new CallingPoint2 { st = time.ToString("hh:mm"), locationName = callingPoints[i], et = "On time" };
 
 			return data;
 		}

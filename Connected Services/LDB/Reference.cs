@@ -11,8 +11,8 @@ namespace LDB
 {
     
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", ConfigurationName="LDB.LDBServiceSoap")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", ConfigurationName="LDB.LDBServiceSoap")]
     public interface LDBServiceSoap
     {
         
@@ -139,7 +139,7 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2013-11-28/Token/types")]
     public partial class AccessToken
@@ -163,8 +163,10 @@ namespace LDB
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(BaseServiceDetails1))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceDetails1))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceDetails))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
     public partial class BaseServiceDetails
@@ -520,7 +522,7 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2007-10-10/ldb/commontypes")]
     public enum ServiceType
     {
@@ -536,19 +538,60 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceDetails1))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
-    public partial class ServiceDetails : BaseServiceDetails
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="BaseServiceDetails", Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/types")]
+    public partial class BaseServiceDetails1 : BaseServiceDetails
+    {
+        
+        private string divertedViaField;
+        
+        private string diversionReasonField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string divertedVia
+        {
+            get
+            {
+                return this.divertedViaField;
+            }
+            set
+            {
+                this.divertedViaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string diversionReason
+        {
+            get
+            {
+                return this.diversionReasonField;
+            }
+            set
+            {
+                this.diversionReasonField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="ServiceDetails", Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/types")]
+    public partial class ServiceDetails1 : BaseServiceDetails1
     {
         
         private string[] adhocAlertsField;
         
-        private FormationData formationField;
+        private FormationData1 formationField;
         
-        private ArrayOfCallingPoints1[] previousCallingPointsField;
+        private ArrayOfCallingPoints2[] previousCallingPointsField;
         
-        private ArrayOfCallingPoints1[] subsequentCallingPointsField;
+        private ArrayOfCallingPoints2[] subsequentCallingPointsField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
@@ -567,7 +610,7 @@ namespace LDB
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public FormationData formation
+        public FormationData1 formation
         {
             get
             {
@@ -582,7 +625,7 @@ namespace LDB
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
         [System.Xml.Serialization.XmlArrayItemAttribute("callingPointList")]
-        public ArrayOfCallingPoints1[] previousCallingPoints
+        public ArrayOfCallingPoints2[] previousCallingPoints
         {
             get
             {
@@ -597,7 +640,7 @@ namespace LDB
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Order=3)]
         [System.Xml.Serialization.XmlArrayItemAttribute("callingPointList")]
-        public ArrayOfCallingPoints1[] subsequentCallingPoints
+        public ArrayOfCallingPoints2[] subsequentCallingPoints
         {
             get
             {
@@ -611,49 +654,33 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
-    public partial class FormationData
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="FormationData", Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/types")]
+    public partial class FormationData1
     {
         
-        private uint avgLoadingField;
-        
-        private bool avgLoadingFieldSpecified;
+        private LoadingCategory loadingCategoryField;
         
         private CoachData[] coachesField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public uint avgLoading
+        public LoadingCategory loadingCategory
         {
             get
             {
-                return this.avgLoadingField;
+                return this.loadingCategoryField;
             }
             set
             {
-                this.avgLoadingField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool avgLoadingSpecified
-        {
-            get
-            {
-                return this.avgLoadingFieldSpecified;
-            }
-            set
-            {
-                this.avgLoadingFieldSpecified = value;
+                this.loadingCategoryField = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("coach", IsNullable=false)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("coach", Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types", IsNullable=false)]
         public CoachData[] coaches
         {
             get
@@ -668,7 +695,79 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/types")]
+    public partial class LoadingCategory
+    {
+        
+        private string codeField;
+        
+        private string colourField;
+        
+        private string imageField;
+        
+        private string valueField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string code
+        {
+            get
+            {
+                return this.codeField;
+            }
+            set
+            {
+                this.codeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string colour
+        {
+            get
+            {
+                return this.colourField;
+            }
+            set
+            {
+                this.colourField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string image
+        {
+            get
+            {
+                return this.imageField;
+            }
+            set
+            {
+                this.imageField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string Value
+        {
+            get
+            {
+                return this.valueField;
+            }
+            set
+            {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
     public partial class CoachData
@@ -756,7 +855,7 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/commontypes")]
     public partial class ToiletAvailabilityType
@@ -802,7 +901,7 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/commontypes")]
     public enum ToiletStatus
     {
@@ -818,13 +917,13 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName="ArrayOfCallingPoints", Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
-    public partial class ArrayOfCallingPoints1
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="ArrayOfCallingPoints", Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/types")]
+    public partial class ArrayOfCallingPoints2
     {
         
-        private CallingPoint1[] callingPointField;
+        private CallingPoint2[] callingPointField;
         
         private ServiceType serviceTypeField;
         
@@ -832,7 +931,7 @@ namespace LDB
         
         private bool assocIsCancelledField;
         
-        public ArrayOfCallingPoints1()
+        public ArrayOfCallingPoints2()
         {
             this.serviceTypeField = ServiceType.train;
             this.serviceChangeRequiredField = false;
@@ -841,7 +940,7 @@ namespace LDB
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("callingPoint", IsNullable=true, Order=0)]
-        public CallingPoint1[] callingPoint
+        public CallingPoint2[] callingPoint
         {
             get
             {
@@ -900,10 +999,559 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName="CallingPoint", Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
-    public partial class CallingPoint1
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="CallingPoint", Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/types")]
+    public partial class CallingPoint2
+    {
+        
+        private string locationNameField;
+        
+        private string crsField;
+        
+        private string stField;
+        
+        private string etField;
+        
+        private string atField;
+        
+        private bool isCancelledField;
+        
+        private ushort lengthField;
+        
+        private bool detachFrontField;
+        
+        private FormationData1 formationField;
+        
+        private string[] adhocAlertsField;
+        
+        private string cancelReasonField;
+        
+        private string delayReasonField;
+        
+        private bool affectedByDiversionField;
+        
+        private int rerouteDelayField;
+        
+        private UncertaintyType uncertaintyField;
+        
+        private string affectedByField;
+        
+        public CallingPoint2()
+        {
+            this.isCancelledField = false;
+            this.lengthField = ((ushort)(0));
+            this.detachFrontField = false;
+            this.affectedByDiversionField = false;
+            this.rerouteDelayField = 0;
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string locationName
+        {
+            get
+            {
+                return this.locationNameField;
+            }
+            set
+            {
+                this.locationNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string crs
+        {
+            get
+            {
+                return this.crsField;
+            }
+            set
+            {
+                this.crsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string st
+        {
+            get
+            {
+                return this.stField;
+            }
+            set
+            {
+                this.stField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string et
+        {
+            get
+            {
+                return this.etField;
+            }
+            set
+            {
+                this.etField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string at
+        {
+            get
+            {
+                return this.atField;
+            }
+            set
+            {
+                this.atField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        public bool isCancelled
+        {
+            get
+            {
+                return this.isCancelledField;
+            }
+            set
+            {
+                this.isCancelledField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        [System.ComponentModel.DefaultValueAttribute(typeof(ushort), "0")]
+        public ushort length
+        {
+            get
+            {
+                return this.lengthField;
+            }
+            set
+            {
+                this.lengthField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        public bool detachFront
+        {
+            get
+            {
+                return this.detachFrontField;
+            }
+            set
+            {
+                this.detachFrontField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        public FormationData1 formation
+        {
+            get
+            {
+                return this.formationField;
+            }
+            set
+            {
+                this.formationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=9)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("adhocAlertText", Namespace="http://thalesgroup.com/RTTI/2012-01-13/ldb/types")]
+        public string[] adhocAlerts
+        {
+            get
+            {
+                return this.adhocAlertsField;
+            }
+            set
+            {
+                this.adhocAlertsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=10)]
+        public string cancelReason
+        {
+            get
+            {
+                return this.cancelReasonField;
+            }
+            set
+            {
+                this.cancelReasonField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=11)]
+        public string delayReason
+        {
+            get
+            {
+                return this.delayReasonField;
+            }
+            set
+            {
+                this.delayReasonField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=12)]
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        public bool affectedByDiversion
+        {
+            get
+            {
+                return this.affectedByDiversionField;
+            }
+            set
+            {
+                this.affectedByDiversionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=13)]
+        [System.ComponentModel.DefaultValueAttribute(0)]
+        public int rerouteDelay
+        {
+            get
+            {
+                return this.rerouteDelayField;
+            }
+            set
+            {
+                this.rerouteDelayField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=14)]
+        public UncertaintyType uncertainty
+        {
+            get
+            {
+                return this.uncertaintyField;
+            }
+            set
+            {
+                this.uncertaintyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=15)]
+        public string affectedBy
+        {
+            get
+            {
+                return this.affectedByField;
+            }
+            set
+            {
+                this.affectedByField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/types")]
+    public partial class UncertaintyType
+    {
+        
+        private string reasonField;
+        
+        private UncertaintyStatus statusField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string reason
+        {
+            get
+            {
+                return this.reasonField;
+            }
+            set
+            {
+                this.reasonField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public UncertaintyStatus status
+        {
+            get
+            {
+                return this.statusField;
+            }
+            set
+            {
+                this.statusField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/types")]
+    public enum UncertaintyStatus
+    {
+        
+        /// <remarks/>
+        Delay,
+        
+        /// <remarks/>
+        Cancellation,
+        
+        /// <remarks/>
+        Other,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
+    public partial class ServiceDetails : BaseServiceDetails
+    {
+        
+        private string[] adhocAlertsField;
+        
+        private FormationData formationField;
+        
+        private ArrayOfCallingPoints[] previousCallingPointsField;
+        
+        private ArrayOfCallingPoints[] subsequentCallingPointsField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("adhocAlertText", Namespace="http://thalesgroup.com/RTTI/2012-01-13/ldb/types")]
+        public string[] adhocAlerts
+        {
+            get
+            {
+                return this.adhocAlertsField;
+            }
+            set
+            {
+                this.adhocAlertsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public FormationData formation
+        {
+            get
+            {
+                return this.formationField;
+            }
+            set
+            {
+                this.formationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("callingPointList")]
+        public ArrayOfCallingPoints[] previousCallingPoints
+        {
+            get
+            {
+                return this.previousCallingPointsField;
+            }
+            set
+            {
+                this.previousCallingPointsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=3)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("callingPointList")]
+        public ArrayOfCallingPoints[] subsequentCallingPoints
+        {
+            get
+            {
+                return this.subsequentCallingPointsField;
+            }
+            set
+            {
+                this.subsequentCallingPointsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
+    public partial class FormationData
+    {
+        
+        private uint avgLoadingField;
+        
+        private bool avgLoadingFieldSpecified;
+        
+        private CoachData[] coachesField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public uint avgLoading
+        {
+            get
+            {
+                return this.avgLoadingField;
+            }
+            set
+            {
+                this.avgLoadingField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool avgLoadingSpecified
+        {
+            get
+            {
+                return this.avgLoadingFieldSpecified;
+            }
+            set
+            {
+                this.avgLoadingFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("coach", IsNullable=false)]
+        public CoachData[] coaches
+        {
+            get
+            {
+                return this.coachesField;
+            }
+            set
+            {
+                this.coachesField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
+    public partial class ArrayOfCallingPoints
+    {
+        
+        private CallingPoint[] callingPointField;
+        
+        private ServiceType serviceTypeField;
+        
+        private bool serviceChangeRequiredField;
+        
+        private bool assocIsCancelledField;
+        
+        public ArrayOfCallingPoints()
+        {
+            this.serviceTypeField = ServiceType.train;
+            this.serviceChangeRequiredField = false;
+            this.assocIsCancelledField = false;
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("callingPoint", IsNullable=true, Order=0)]
+        public CallingPoint[] callingPoint
+        {
+            get
+            {
+                return this.callingPointField;
+            }
+            set
+            {
+                this.callingPointField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [System.ComponentModel.DefaultValueAttribute(ServiceType.train)]
+        public ServiceType serviceType
+        {
+            get
+            {
+                return this.serviceTypeField;
+            }
+            set
+            {
+                this.serviceTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        public bool serviceChangeRequired
+        {
+            get
+            {
+                return this.serviceChangeRequiredField;
+            }
+            set
+            {
+                this.serviceChangeRequiredField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        public bool assocIsCancelled
+        {
+            get
+            {
+                return this.assocIsCancelledField;
+            }
+            set
+            {
+                this.assocIsCancelledField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
+    public partial class CallingPoint
     {
         
         private string locationNameField;
@@ -926,7 +1574,7 @@ namespace LDB
         
         private string[] adhocAlertsField;
         
-        public CallingPoint1()
+        public CallingPoint()
         {
             this.isCancelledField = false;
             this.lengthField = ((ushort)(0));
@@ -1079,10 +1727,10 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName="DepartureItemWithCallingPoints", Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
-    public partial class DepartureItemWithCallingPoints2
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="DepartureItemWithCallingPoints", Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/types")]
+    public partial class DepartureItemWithCallingPoints3
     {
         
         private ServiceItemWithCallingPoints2 serviceField;
@@ -1119,20 +1767,20 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName="ServiceItemWithCallingPoints", Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="ServiceItemWithCallingPoints", Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/types")]
     public partial class ServiceItemWithCallingPoints2 : ServiceItem2
     {
         
-        private ArrayOfCallingPoints1[] previousCallingPointsField;
+        private ArrayOfCallingPoints2[] previousCallingPointsField;
         
-        private ArrayOfCallingPoints1[] subsequentCallingPointsField;
+        private ArrayOfCallingPoints2[] subsequentCallingPointsField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
         [System.Xml.Serialization.XmlArrayItemAttribute("callingPointList")]
-        public ArrayOfCallingPoints1[] previousCallingPoints
+        public ArrayOfCallingPoints2[] previousCallingPoints
         {
             get
             {
@@ -1147,7 +1795,7 @@ namespace LDB
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
         [System.Xml.Serialization.XmlArrayItemAttribute("callingPointList")]
-        public ArrayOfCallingPoints1[] subsequentCallingPoints
+        public ArrayOfCallingPoints2[] subsequentCallingPoints
         {
             get
             {
@@ -1162,17 +1810,33 @@ namespace LDB
     
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItemWithCallingPoints2))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName="ServiceItem", Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
-    public partial class ServiceItem2 : ServiceItem1
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="ServiceItem", Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/types")]
+    public partial class ServiceItem2 : ServiceItem
     {
         
-        private FormationData formationField;
+        private FormationData1 formationField;
+        
+        private bool futureCancellationField;
+        
+        private bool futureDelayField;
+        
+        private ServiceItemDiversion diversionField;
+        
+        private UncertaintyType uncertaintyField;
+        
+        private string affectedByField;
+        
+        public ServiceItem2()
+        {
+            this.futureCancellationField = false;
+            this.futureDelayField = false;
+        }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public FormationData formation
+        public FormationData1 formation
         {
             get
             {
@@ -1183,16 +1847,288 @@ namespace LDB
                 this.formationField = value;
             }
         }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        public bool futureCancellation
+        {
+            get
+            {
+                return this.futureCancellationField;
+            }
+            set
+            {
+                this.futureCancellationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        [System.ComponentModel.DefaultValueAttribute(false)]
+        public bool futureDelay
+        {
+            get
+            {
+                return this.futureDelayField;
+            }
+            set
+            {
+                this.futureDelayField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public ServiceItemDiversion diversion
+        {
+            get
+            {
+                return this.diversionField;
+            }
+            set
+            {
+                this.diversionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public UncertaintyType uncertainty
+        {
+            get
+            {
+                return this.uncertaintyField;
+            }
+            set
+            {
+                this.uncertaintyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public string affectedBy
+        {
+            get
+            {
+                return this.affectedByField;
+            }
+            set
+            {
+                this.affectedByField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/types")]
+    public partial class ServiceItemDiversion
+    {
+        
+        private string reasonField;
+        
+        private string divertedViaField;
+        
+        private ServiceItemDiversionBetween betweenField;
+        
+        private int rerouteDelayField;
+        
+        public ServiceItemDiversion()
+        {
+            this.rerouteDelayField = 0;
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string reason
+        {
+            get
+            {
+                return this.reasonField;
+            }
+            set
+            {
+                this.reasonField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string divertedVia
+        {
+            get
+            {
+                return this.divertedViaField;
+            }
+            set
+            {
+                this.divertedViaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public ServiceItemDiversionBetween between
+        {
+            get
+            {
+                return this.betweenField;
+            }
+            set
+            {
+                this.betweenField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        [System.ComponentModel.DefaultValueAttribute(0)]
+        public int rerouteDelay
+        {
+            get
+            {
+                return this.rerouteDelayField;
+            }
+            set
+            {
+                this.rerouteDelayField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/types")]
+    public partial class ServiceItemDiversionBetween
+    {
+        
+        private ServiceItemDiversionBetweenStart startField;
+        
+        private ServiceItemDiversionBetweenEnd endField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public ServiceItemDiversionBetweenStart start
+        {
+            get
+            {
+                return this.startField;
+            }
+            set
+            {
+                this.startField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public ServiceItemDiversionBetweenEnd end
+        {
+            get
+            {
+                return this.endField;
+            }
+            set
+            {
+                this.endField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/types")]
+    public partial class ServiceItemDiversionBetweenStart
+    {
+        
+        private string crsField;
+        
+        private string valueField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string crs
+        {
+            get
+            {
+                return this.crsField;
+            }
+            set
+            {
+                this.crsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string Value
+        {
+            get
+            {
+                return this.valueField;
+            }
+            set
+            {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/types")]
+    public partial class ServiceItemDiversionBetweenEnd
+    {
+        
+        private string crsField;
+        
+        private string valueField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string crs
+        {
+            get
+            {
+                return this.crsField;
+            }
+            set
+            {
+                this.crsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string Value
+        {
+            get
+            {
+                return this.valueField;
+            }
+            set
+            {
+                this.valueField = value;
+            }
+        }
     }
     
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItem2))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItemWithCallingPoints2))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItemWithCallingPoints1))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItem1))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItemWithCallingPoints))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName="ServiceItem", Namespace="http://thalesgroup.com/RTTI/2016-02-16/ldb/types")]
-    public partial class ServiceItem1 : BaseServiceItem1
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2016-02-16/ldb/types")]
+    public partial class ServiceItem : BaseServiceItem1
     {
         
         private ServiceLocation[] originField;
@@ -1265,7 +2201,7 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
     public partial class ServiceLocation
@@ -1359,11 +2295,13 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItem1))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItem))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItem2))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItemWithCallingPoints2))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItemWithCallingPoints1))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItem1))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItemWithCallingPoints))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(TypeName="BaseServiceItem", Namespace="http://thalesgroup.com/RTTI/2016-02-16/ldb/types")]
     public partial class BaseServiceItem1 : BaseServiceItem
@@ -1387,14 +2325,16 @@ namespace LDB
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItem3))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItemWithCallingPoints3))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(BaseServiceItem1))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItem1))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItem))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItem2))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItemWithCallingPoints2))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItemWithCallingPoints1))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItem))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItem1))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItemWithCallingPoints))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
     public partial class BaseServiceItem
@@ -1707,11 +2647,11 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItemWithCallingPoints))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItemWithCallingPoints3))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
-    public partial class ServiceItem : BaseServiceItem
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="ServiceItem", Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
+    public partial class ServiceItem3 : BaseServiceItem
     {
         
         private ServiceLocation[] originField;
@@ -1784,20 +2724,20 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
-    public partial class ServiceItemWithCallingPoints : ServiceItem
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="ServiceItemWithCallingPoints", Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
+    public partial class ServiceItemWithCallingPoints3 : ServiceItem3
     {
         
-        private ArrayOfCallingPoints[] previousCallingPointsField;
+        private ArrayOfCallingPoints1[] previousCallingPointsField;
         
-        private ArrayOfCallingPoints[] subsequentCallingPointsField;
+        private ArrayOfCallingPoints1[] subsequentCallingPointsField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
         [System.Xml.Serialization.XmlArrayItemAttribute("callingPointList")]
-        public ArrayOfCallingPoints[] previousCallingPoints
+        public ArrayOfCallingPoints1[] previousCallingPoints
         {
             get
             {
@@ -1812,7 +2752,7 @@ namespace LDB
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
         [System.Xml.Serialization.XmlArrayItemAttribute("callingPointList")]
-        public ArrayOfCallingPoints[] subsequentCallingPoints
+        public ArrayOfCallingPoints1[] subsequentCallingPoints
         {
             get
             {
@@ -1826,13 +2766,13 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
-    public partial class ArrayOfCallingPoints
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="ArrayOfCallingPoints", Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
+    public partial class ArrayOfCallingPoints1
     {
         
-        private CallingPoint[] callingPointField;
+        private CallingPoint1[] callingPointField;
         
         private ServiceType serviceTypeField;
         
@@ -1840,7 +2780,7 @@ namespace LDB
         
         private bool assocIsCancelledField;
         
-        public ArrayOfCallingPoints()
+        public ArrayOfCallingPoints1()
         {
             this.serviceTypeField = ServiceType.train;
             this.serviceChangeRequiredField = false;
@@ -1849,7 +2789,7 @@ namespace LDB
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("callingPoint", IsNullable=true, Order=0)]
-        public CallingPoint[] callingPoint
+        public CallingPoint1[] callingPoint
         {
             get
             {
@@ -1908,10 +2848,10 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
-    public partial class CallingPoint
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="CallingPoint", Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
+    public partial class CallingPoint1
     {
         
         private string locationNameField;
@@ -1932,7 +2872,7 @@ namespace LDB
         
         private string[] adhocAlertsField;
         
-        public CallingPoint()
+        public CallingPoint1()
         {
             this.isCancelledField = false;
             this.lengthField = ((ushort)(0));
@@ -2071,20 +3011,20 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(TypeName="ServiceItemWithCallingPoints", Namespace="http://thalesgroup.com/RTTI/2016-02-16/ldb/types")]
-    public partial class ServiceItemWithCallingPoints1 : ServiceItem1
+    public partial class ServiceItemWithCallingPoints1 : ServiceItem
     {
         
-        private ArrayOfCallingPoints[] previousCallingPointsField;
+        private ArrayOfCallingPoints1[] previousCallingPointsField;
         
-        private ArrayOfCallingPoints[] subsequentCallingPointsField;
+        private ArrayOfCallingPoints1[] subsequentCallingPointsField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
         [System.Xml.Serialization.XmlArrayItemAttribute("callingPointList", Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
-        public ArrayOfCallingPoints[] previousCallingPoints
+        public ArrayOfCallingPoints1[] previousCallingPoints
         {
             get
             {
@@ -2099,6 +3039,73 @@ namespace LDB
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
         [System.Xml.Serialization.XmlArrayItemAttribute("callingPointList", Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
+        public ArrayOfCallingPoints1[] subsequentCallingPoints
+        {
+            get
+            {
+                return this.subsequentCallingPointsField;
+            }
+            set
+            {
+                this.subsequentCallingPointsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ServiceItemWithCallingPoints))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="ServiceItem", Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
+    public partial class ServiceItem1 : ServiceItem
+    {
+        
+        private FormationData formationField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public FormationData formation
+        {
+            get
+            {
+                return this.formationField;
+            }
+            set
+            {
+                this.formationField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
+    public partial class ServiceItemWithCallingPoints : ServiceItem1
+    {
+        
+        private ArrayOfCallingPoints[] previousCallingPointsField;
+        
+        private ArrayOfCallingPoints[] subsequentCallingPointsField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("callingPointList")]
+        public ArrayOfCallingPoints[] previousCallingPoints
+        {
+            get
+            {
+                return this.previousCallingPointsField;
+            }
+            set
+            {
+                this.previousCallingPointsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("callingPointList")]
         public ArrayOfCallingPoints[] subsequentCallingPoints
         {
             get
@@ -2113,10 +3120,10 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName="DepartureItem", Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
-    public partial class DepartureItem2
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="DepartureItem", Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/types")]
+    public partial class DepartureItem3
     {
         
         private ServiceItem2 serviceField;
@@ -2153,7 +3160,87 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="DepartureItemWithCallingPoints", Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
+    public partial class DepartureItemWithCallingPoints2
+    {
+        
+        private ServiceItemWithCallingPoints3 serviceField;
+        
+        private string crsField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public ServiceItemWithCallingPoints3 service
+        {
+            get
+            {
+                return this.serviceField;
+            }
+            set
+            {
+                this.serviceField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string crs
+        {
+            get
+            {
+                return this.crsField;
+            }
+            set
+            {
+                this.crsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="DepartureItem", Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
+    public partial class DepartureItem2
+    {
+        
+        private ServiceItem3 serviceField;
+        
+        private string crsField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
+        public ServiceItem3 service
+        {
+            get
+            {
+                return this.serviceField;
+            }
+            set
+            {
+                this.serviceField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string crs
+        {
+            get
+            {
+                return this.crsField;
+            }
+            set
+            {
+                this.crsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(TypeName="DepartureItemWithCallingPoints", Namespace="http://thalesgroup.com/RTTI/2016-02-16/ldb/types")]
     public partial class DepartureItemWithCallingPoints1
@@ -2193,19 +3280,19 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(TypeName="DepartureItem", Namespace="http://thalesgroup.com/RTTI/2016-02-16/ldb/types")]
     public partial class DepartureItem1
     {
         
-        private ServiceItem1 serviceField;
+        private ServiceItem serviceField;
         
         private string crsField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public ServiceItem1 service
+        public ServiceItem service
         {
             get
             {
@@ -2233,9 +3320,9 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
     public partial class DepartureItemWithCallingPoints
     {
         
@@ -2273,19 +3360,19 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
     public partial class DepartureItem
     {
         
-        private ServiceItem serviceField;
+        private ServiceItem1 serviceField;
         
         private string crsField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true, Order=0)]
-        public ServiceItem service
+        public ServiceItem1 service
         {
             get
             {
@@ -2313,7 +3400,7 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2012-01-13/ldb/types")]
     public partial class NRCCMessage
@@ -2337,6 +3424,10 @@ namespace LDB
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(DeparturesBoardWithDetails3))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(DeparturesBoard3))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(StationBoardWithDetails3))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(StationBoard3))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(DeparturesBoardWithDetails2))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(DeparturesBoard2))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(StationBoardWithDetails2))]
@@ -2349,7 +3440,7 @@ namespace LDB
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(DeparturesBoard))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(StationBoardWithDetails))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(StationBoard))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
     public partial class BaseStationBoard
@@ -2512,7 +3603,7 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2007-10-10/ldb/commontypes")]
     public enum FilterType
     {
@@ -2525,18 +3616,18 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName="DeparturesBoardWithDetails", Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
-    public partial class DeparturesBoardWithDetails2 : BaseStationBoard
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="DeparturesBoardWithDetails", Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/types")]
+    public partial class DeparturesBoardWithDetails3 : BaseStationBoard
     {
         
-        private DepartureItemWithCallingPoints2[] departuresField;
+        private DepartureItemWithCallingPoints3[] departuresField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
         [System.Xml.Serialization.XmlArrayItemAttribute("destination", IsNullable=false)]
-        public DepartureItemWithCallingPoints2[] departures
+        public DepartureItemWithCallingPoints3[] departures
         {
             get
             {
@@ -2550,18 +3641,18 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName="DeparturesBoard", Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
-    public partial class DeparturesBoard2 : BaseStationBoard
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="DeparturesBoard", Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/types")]
+    public partial class DeparturesBoard3 : BaseStationBoard
     {
         
-        private DepartureItem2[] departuresField;
+        private DepartureItem3[] departuresField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
         [System.Xml.Serialization.XmlArrayItemAttribute("destination", IsNullable=false)]
-        public DepartureItem2[] departures
+        public DepartureItem3[] departures
         {
             get
             {
@@ -2575,10 +3666,10 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName="StationBoardWithDetails", Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
-    public partial class StationBoardWithDetails2 : BaseStationBoard
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="StationBoardWithDetails", Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/types")]
+    public partial class StationBoardWithDetails3 : BaseStationBoard
     {
         
         private ServiceItemWithCallingPoints2[] trainServicesField;
@@ -2634,10 +3725,10 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName="StationBoard", Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
-    public partial class StationBoard2 : BaseStationBoard
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="StationBoard", Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/types")]
+    public partial class StationBoard3 : BaseStationBoard
     {
         
         private ServiceItem2[] trainServicesField;
@@ -2693,7 +3784,175 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="DeparturesBoardWithDetails", Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
+    public partial class DeparturesBoardWithDetails2 : BaseStationBoard
+    {
+        
+        private DepartureItemWithCallingPoints2[] departuresField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("destination", IsNullable=false)]
+        public DepartureItemWithCallingPoints2[] departures
+        {
+            get
+            {
+                return this.departuresField;
+            }
+            set
+            {
+                this.departuresField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="DeparturesBoard", Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
+    public partial class DeparturesBoard2 : BaseStationBoard
+    {
+        
+        private DepartureItem2[] departuresField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("destination", IsNullable=false)]
+        public DepartureItem2[] departures
+        {
+            get
+            {
+                return this.departuresField;
+            }
+            set
+            {
+                this.departuresField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="StationBoardWithDetails", Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
+    public partial class StationBoardWithDetails2 : BaseStationBoard
+    {
+        
+        private ServiceItemWithCallingPoints3[] trainServicesField;
+        
+        private ServiceItemWithCallingPoints3[] busServicesField;
+        
+        private ServiceItemWithCallingPoints3[] ferryServicesField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("service")]
+        public ServiceItemWithCallingPoints3[] trainServices
+        {
+            get
+            {
+                return this.trainServicesField;
+            }
+            set
+            {
+                this.trainServicesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("service")]
+        public ServiceItemWithCallingPoints3[] busServices
+        {
+            get
+            {
+                return this.busServicesField;
+            }
+            set
+            {
+                this.busServicesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("service")]
+        public ServiceItemWithCallingPoints3[] ferryServices
+        {
+            get
+            {
+                return this.ferryServicesField;
+            }
+            set
+            {
+                this.ferryServicesField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="StationBoard", Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
+    public partial class StationBoard2 : BaseStationBoard
+    {
+        
+        private ServiceItem3[] trainServicesField;
+        
+        private ServiceItem3[] busServicesField;
+        
+        private ServiceItem3[] ferryServicesField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("service")]
+        public ServiceItem3[] trainServices
+        {
+            get
+            {
+                return this.trainServicesField;
+            }
+            set
+            {
+                this.trainServicesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("service")]
+        public ServiceItem3[] busServices
+        {
+            get
+            {
+                return this.busServicesField;
+            }
+            set
+            {
+                this.busServicesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("service")]
+        public ServiceItem3[] ferryServices
+        {
+            get
+            {
+                return this.ferryServicesField;
+            }
+            set
+            {
+                this.ferryServicesField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(TypeName="DeparturesBoardWithDetails", Namespace="http://thalesgroup.com/RTTI/2016-02-16/ldb/types")]
     public partial class DeparturesBoardWithDetails1 : BaseStationBoard
@@ -2718,7 +3977,7 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(TypeName="DeparturesBoard", Namespace="http://thalesgroup.com/RTTI/2016-02-16/ldb/types")]
     public partial class DeparturesBoard1 : BaseStationBoard
@@ -2743,7 +4002,7 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(TypeName="StationBoardWithDetails", Namespace="http://thalesgroup.com/RTTI/2016-02-16/ldb/types")]
     public partial class StationBoardWithDetails1 : BaseStationBoard
@@ -2802,178 +4061,10 @@ namespace LDB
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(TypeName="StationBoard", Namespace="http://thalesgroup.com/RTTI/2016-02-16/ldb/types")]
     public partial class StationBoard1 : BaseStationBoard
-    {
-        
-        private ServiceItem1[] trainServicesField;
-        
-        private ServiceItem1[] busServicesField;
-        
-        private ServiceItem1[] ferryServicesField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("service")]
-        public ServiceItem1[] trainServices
-        {
-            get
-            {
-                return this.trainServicesField;
-            }
-            set
-            {
-                this.trainServicesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("service")]
-        public ServiceItem1[] busServices
-        {
-            get
-            {
-                return this.busServicesField;
-            }
-            set
-            {
-                this.busServicesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("service")]
-        public ServiceItem1[] ferryServices
-        {
-            get
-            {
-                return this.ferryServicesField;
-            }
-            set
-            {
-                this.ferryServicesField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
-    public partial class DeparturesBoardWithDetails : BaseStationBoard
-    {
-        
-        private DepartureItemWithCallingPoints[] departuresField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("destination", IsNullable=false)]
-        public DepartureItemWithCallingPoints[] departures
-        {
-            get
-            {
-                return this.departuresField;
-            }
-            set
-            {
-                this.departuresField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
-    public partial class DeparturesBoard : BaseStationBoard
-    {
-        
-        private DepartureItem[] departuresField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("destination", IsNullable=false)]
-        public DepartureItem[] departures
-        {
-            get
-            {
-                return this.departuresField;
-            }
-            set
-            {
-                this.departuresField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
-    public partial class StationBoardWithDetails : BaseStationBoard
-    {
-        
-        private ServiceItemWithCallingPoints[] trainServicesField;
-        
-        private ServiceItemWithCallingPoints[] busServicesField;
-        
-        private ServiceItemWithCallingPoints[] ferryServicesField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("service")]
-        public ServiceItemWithCallingPoints[] trainServices
-        {
-            get
-            {
-                return this.trainServicesField;
-            }
-            set
-            {
-                this.trainServicesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("service")]
-        public ServiceItemWithCallingPoints[] busServices
-        {
-            get
-            {
-                return this.busServicesField;
-            }
-            set
-            {
-                this.busServicesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("service")]
-        public ServiceItemWithCallingPoints[] ferryServices
-        {
-            get
-            {
-                return this.ferryServicesField;
-            }
-            set
-            {
-                this.ferryServicesField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2015-11-27/ldb/types")]
-    public partial class StationBoard : BaseStationBoard
     {
         
         private ServiceItem[] trainServicesField;
@@ -3028,34 +4119,202 @@ namespace LDB
         }
     }
     
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
+    public partial class DeparturesBoardWithDetails : BaseStationBoard
+    {
+        
+        private DepartureItemWithCallingPoints[] departuresField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("destination", IsNullable=false)]
+        public DepartureItemWithCallingPoints[] departures
+        {
+            get
+            {
+                return this.departuresField;
+            }
+            set
+            {
+                this.departuresField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
+    public partial class DeparturesBoard : BaseStationBoard
+    {
+        
+        private DepartureItem[] departuresField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("destination", IsNullable=false)]
+        public DepartureItem[] departures
+        {
+            get
+            {
+                return this.departuresField;
+            }
+            set
+            {
+                this.departuresField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
+    public partial class StationBoardWithDetails : BaseStationBoard
+    {
+        
+        private ServiceItemWithCallingPoints[] trainServicesField;
+        
+        private ServiceItemWithCallingPoints[] busServicesField;
+        
+        private ServiceItemWithCallingPoints[] ferryServicesField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("service", IsNullable=false)]
+        public ServiceItemWithCallingPoints[] trainServices
+        {
+            get
+            {
+                return this.trainServicesField;
+            }
+            set
+            {
+                this.trainServicesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("service", IsNullable=false)]
+        public ServiceItemWithCallingPoints[] busServices
+        {
+            get
+            {
+                return this.busServicesField;
+            }
+            set
+            {
+                this.busServicesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("service", IsNullable=false)]
+        public ServiceItemWithCallingPoints[] ferryServices
+        {
+            get
+            {
+                return this.ferryServicesField;
+            }
+            set
+            {
+                this.ferryServicesField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/types")]
+    public partial class StationBoard : BaseStationBoard
+    {
+        
+        private ServiceItem1[] trainServicesField;
+        
+        private ServiceItem1[] busServicesField;
+        
+        private ServiceItem1[] ferryServicesField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=0)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("service", IsNullable=false)]
+        public ServiceItem1[] trainServices
+        {
+            get
+            {
+                return this.trainServicesField;
+            }
+            set
+            {
+                this.trainServicesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=1)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("service", IsNullable=false)]
+        public ServiceItem1[] busServices
+        {
+            get
+            {
+                return this.busServicesField;
+            }
+            set
+            {
+                this.busServicesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(Order=2)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("service", IsNullable=false)]
+        public ServiceItem1[] ferryServices
+        {
+            get
+            {
+                return this.ferryServicesField;
+            }
+            set
+            {
+                this.ferryServicesField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetDepartureBoardRequest", WrapperNamespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetDepartureBoardRequest", WrapperNamespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", IsWrapped=true)]
     public partial class GetDepartureBoardRequest
     {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://thalesgroup.com/RTTI/2013-11-28/Token/types")]
         public LDB.AccessToken AccessToken;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=0)]
         public ushort numRows;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=1)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=1)]
         public string crs;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=2)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=2)]
         public string filterCrs;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=3)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=3)]
         [System.ComponentModel.DefaultValueAttribute(FilterType.to)]
         public LDB.FilterType filterType;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=4)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=4)]
         [System.ComponentModel.DefaultValueAttribute(0)]
         public int timeOffset;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=5)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=5)]
         [System.ComponentModel.DefaultValueAttribute(120)]
         public int timeWindow;
         
@@ -3076,53 +4335,53 @@ namespace LDB
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetDepartureBoardResponse", WrapperNamespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetDepartureBoardResponse", WrapperNamespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", IsWrapped=true)]
     public partial class GetDepartureBoardResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=0)]
-        public LDB.StationBoard2 GetStationBoardResult;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=0)]
+        public LDB.StationBoard3 GetStationBoardResult;
         
         public GetDepartureBoardResponse()
         {
         }
         
-        public GetDepartureBoardResponse(LDB.StationBoard2 GetStationBoardResult)
+        public GetDepartureBoardResponse(LDB.StationBoard3 GetStationBoardResult)
         {
             this.GetStationBoardResult = GetStationBoardResult;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetArrivalBoardRequest", WrapperNamespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetArrivalBoardRequest", WrapperNamespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", IsWrapped=true)]
     public partial class GetArrivalBoardRequest
     {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://thalesgroup.com/RTTI/2013-11-28/Token/types")]
         public LDB.AccessToken AccessToken;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=0)]
         public ushort numRows;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=1)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=1)]
         public string crs;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=2)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=2)]
         public string filterCrs;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=3)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=3)]
         [System.ComponentModel.DefaultValueAttribute(FilterType.to)]
         public LDB.FilterType filterType;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=4)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=4)]
         [System.ComponentModel.DefaultValueAttribute(0)]
         public int timeOffset;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=5)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=5)]
         [System.ComponentModel.DefaultValueAttribute(120)]
         public int timeWindow;
         
@@ -3143,53 +4402,53 @@ namespace LDB
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetArrivalBoardResponse", WrapperNamespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetArrivalBoardResponse", WrapperNamespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", IsWrapped=true)]
     public partial class GetArrivalBoardResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=0)]
-        public LDB.StationBoard2 GetStationBoardResult;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=0)]
+        public LDB.StationBoard3 GetStationBoardResult;
         
         public GetArrivalBoardResponse()
         {
         }
         
-        public GetArrivalBoardResponse(LDB.StationBoard2 GetStationBoardResult)
+        public GetArrivalBoardResponse(LDB.StationBoard3 GetStationBoardResult)
         {
             this.GetStationBoardResult = GetStationBoardResult;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetArrivalDepartureBoardRequest", WrapperNamespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetArrivalDepartureBoardRequest", WrapperNamespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", IsWrapped=true)]
     public partial class GetArrivalDepartureBoardRequest
     {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://thalesgroup.com/RTTI/2013-11-28/Token/types")]
         public LDB.AccessToken AccessToken;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=0)]
         public ushort numRows;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=1)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=1)]
         public string crs;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=2)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=2)]
         public string filterCrs;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=3)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=3)]
         [System.ComponentModel.DefaultValueAttribute(FilterType.to)]
         public LDB.FilterType filterType;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=4)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=4)]
         [System.ComponentModel.DefaultValueAttribute(0)]
         public int timeOffset;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=5)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=5)]
         [System.ComponentModel.DefaultValueAttribute(120)]
         public int timeWindow;
         
@@ -3210,36 +4469,36 @@ namespace LDB
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetArrivalDepartureBoardResponse", WrapperNamespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetArrivalDepartureBoardResponse", WrapperNamespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", IsWrapped=true)]
     public partial class GetArrivalDepartureBoardResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=0)]
-        public LDB.StationBoard2 GetStationBoardResult;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=0)]
+        public LDB.StationBoard3 GetStationBoardResult;
         
         public GetArrivalDepartureBoardResponse()
         {
         }
         
-        public GetArrivalDepartureBoardResponse(LDB.StationBoard2 GetStationBoardResult)
+        public GetArrivalDepartureBoardResponse(LDB.StationBoard3 GetStationBoardResult)
         {
             this.GetStationBoardResult = GetStationBoardResult;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetServiceDetailsRequest", WrapperNamespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetServiceDetailsRequest", WrapperNamespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", IsWrapped=true)]
     public partial class GetServiceDetailsRequest
     {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://thalesgroup.com/RTTI/2013-11-28/Token/types")]
         public LDB.AccessToken AccessToken;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=0)]
         public string serviceID;
         
         public GetServiceDetailsRequest()
@@ -3254,53 +4513,53 @@ namespace LDB
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetServiceDetailsResponse", WrapperNamespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetServiceDetailsResponse", WrapperNamespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", IsWrapped=true)]
     public partial class GetServiceDetailsResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=0)]
-        public LDB.ServiceDetails GetServiceDetailsResult;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=0)]
+        public LDB.ServiceDetails1 GetServiceDetailsResult;
         
         public GetServiceDetailsResponse()
         {
         }
         
-        public GetServiceDetailsResponse(LDB.ServiceDetails GetServiceDetailsResult)
+        public GetServiceDetailsResponse(LDB.ServiceDetails1 GetServiceDetailsResult)
         {
             this.GetServiceDetailsResult = GetServiceDetailsResult;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetDepBoardWithDetailsRequest", WrapperNamespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetDepBoardWithDetailsRequest", WrapperNamespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", IsWrapped=true)]
     public partial class GetDepBoardWithDetailsRequest
     {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://thalesgroup.com/RTTI/2013-11-28/Token/types")]
         public LDB.AccessToken AccessToken;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=0)]
         public ushort numRows;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=1)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=1)]
         public string crs;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=2)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=2)]
         public string filterCrs;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=3)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=3)]
         [System.ComponentModel.DefaultValueAttribute(FilterType.to)]
         public LDB.FilterType filterType;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=4)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=4)]
         [System.ComponentModel.DefaultValueAttribute(0)]
         public int timeOffset;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=5)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=5)]
         [System.ComponentModel.DefaultValueAttribute(120)]
         public int timeWindow;
         
@@ -3321,53 +4580,53 @@ namespace LDB
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetDepBoardWithDetailsResponse", WrapperNamespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetDepBoardWithDetailsResponse", WrapperNamespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", IsWrapped=true)]
     public partial class GetDepBoardWithDetailsResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=0)]
-        public LDB.StationBoardWithDetails2 GetStationBoardResult;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=0)]
+        public LDB.StationBoardWithDetails3 GetStationBoardResult;
         
         public GetDepBoardWithDetailsResponse()
         {
         }
         
-        public GetDepBoardWithDetailsResponse(LDB.StationBoardWithDetails2 GetStationBoardResult)
+        public GetDepBoardWithDetailsResponse(LDB.StationBoardWithDetails3 GetStationBoardResult)
         {
             this.GetStationBoardResult = GetStationBoardResult;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetArrBoardWithDetailsRequest", WrapperNamespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetArrBoardWithDetailsRequest", WrapperNamespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", IsWrapped=true)]
     public partial class GetArrBoardWithDetailsRequest
     {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://thalesgroup.com/RTTI/2013-11-28/Token/types")]
         public LDB.AccessToken AccessToken;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=0)]
         public ushort numRows;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=1)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=1)]
         public string crs;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=2)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=2)]
         public string filterCrs;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=3)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=3)]
         [System.ComponentModel.DefaultValueAttribute(FilterType.to)]
         public LDB.FilterType filterType;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=4)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=4)]
         [System.ComponentModel.DefaultValueAttribute(0)]
         public int timeOffset;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=5)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=5)]
         [System.ComponentModel.DefaultValueAttribute(120)]
         public int timeWindow;
         
@@ -3388,53 +4647,53 @@ namespace LDB
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetArrBoardWithDetailsResponse", WrapperNamespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetArrBoardWithDetailsResponse", WrapperNamespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", IsWrapped=true)]
     public partial class GetArrBoardWithDetailsResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=0)]
-        public LDB.StationBoardWithDetails2 GetStationBoardResult;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=0)]
+        public LDB.StationBoardWithDetails3 GetStationBoardResult;
         
         public GetArrBoardWithDetailsResponse()
         {
         }
         
-        public GetArrBoardWithDetailsResponse(LDB.StationBoardWithDetails2 GetStationBoardResult)
+        public GetArrBoardWithDetailsResponse(LDB.StationBoardWithDetails3 GetStationBoardResult)
         {
             this.GetStationBoardResult = GetStationBoardResult;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetArrDepBoardWithDetailsRequest", WrapperNamespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetArrDepBoardWithDetailsRequest", WrapperNamespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", IsWrapped=true)]
     public partial class GetArrDepBoardWithDetailsRequest
     {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://thalesgroup.com/RTTI/2013-11-28/Token/types")]
         public LDB.AccessToken AccessToken;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=0)]
         public ushort numRows;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=1)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=1)]
         public string crs;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=2)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=2)]
         public string filterCrs;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=3)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=3)]
         [System.ComponentModel.DefaultValueAttribute(FilterType.to)]
         public LDB.FilterType filterType;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=4)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=4)]
         [System.ComponentModel.DefaultValueAttribute(0)]
         public int timeOffset;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=5)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=5)]
         [System.ComponentModel.DefaultValueAttribute(120)]
         public int timeWindow;
         
@@ -3455,47 +4714,47 @@ namespace LDB
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetArrDepBoardWithDetailsResponse", WrapperNamespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetArrDepBoardWithDetailsResponse", WrapperNamespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", IsWrapped=true)]
     public partial class GetArrDepBoardWithDetailsResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=0)]
-        public LDB.StationBoardWithDetails2 GetStationBoardResult;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=0)]
+        public LDB.StationBoardWithDetails3 GetStationBoardResult;
         
         public GetArrDepBoardWithDetailsResponse()
         {
         }
         
-        public GetArrDepBoardWithDetailsResponse(LDB.StationBoardWithDetails2 GetStationBoardResult)
+        public GetArrDepBoardWithDetailsResponse(LDB.StationBoardWithDetails3 GetStationBoardResult)
         {
             this.GetStationBoardResult = GetStationBoardResult;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetNextDeparturesRequest", WrapperNamespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetNextDeparturesRequest", WrapperNamespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", IsWrapped=true)]
     public partial class GetNextDeparturesRequest
     {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://thalesgroup.com/RTTI/2013-11-28/Token/types")]
         public LDB.AccessToken AccessToken;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=0)]
         public string crs;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=1)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=1)]
         [System.Xml.Serialization.XmlArrayItemAttribute("crs", IsNullable=false)]
         public string[] filterList;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=2)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=2)]
         [System.ComponentModel.DefaultValueAttribute(0)]
         public int timeOffset;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=3)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=3)]
         [System.ComponentModel.DefaultValueAttribute(120)]
         public int timeWindow;
         
@@ -3514,47 +4773,47 @@ namespace LDB
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetNextDeparturesResponse", WrapperNamespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetNextDeparturesResponse", WrapperNamespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", IsWrapped=true)]
     public partial class GetNextDeparturesResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=0)]
-        public LDB.DeparturesBoard2 DeparturesBoard;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=0)]
+        public LDB.DeparturesBoard3 DeparturesBoard;
         
         public GetNextDeparturesResponse()
         {
         }
         
-        public GetNextDeparturesResponse(LDB.DeparturesBoard2 DeparturesBoard)
+        public GetNextDeparturesResponse(LDB.DeparturesBoard3 DeparturesBoard)
         {
             this.DeparturesBoard = DeparturesBoard;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetNextDeparturesWithDetailsRequest", WrapperNamespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetNextDeparturesWithDetailsRequest", WrapperNamespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", IsWrapped=true)]
     public partial class GetNextDeparturesWithDetailsRequest
     {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://thalesgroup.com/RTTI/2013-11-28/Token/types")]
         public LDB.AccessToken AccessToken;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=0)]
         public string crs;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=1)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=1)]
         [System.Xml.Serialization.XmlArrayItemAttribute("crs", IsNullable=false)]
         public string[] filterList;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=2)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=2)]
         [System.ComponentModel.DefaultValueAttribute(0)]
         public int timeOffset;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=3)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=3)]
         [System.ComponentModel.DefaultValueAttribute(120)]
         public int timeWindow;
         
@@ -3573,47 +4832,47 @@ namespace LDB
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetNextDeparturesWithDetailsResponse", WrapperNamespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetNextDeparturesWithDetailsResponse", WrapperNamespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", IsWrapped=true)]
     public partial class GetNextDeparturesWithDetailsResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=0)]
-        public LDB.DeparturesBoardWithDetails2 DeparturesBoard;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=0)]
+        public LDB.DeparturesBoardWithDetails3 DeparturesBoard;
         
         public GetNextDeparturesWithDetailsResponse()
         {
         }
         
-        public GetNextDeparturesWithDetailsResponse(LDB.DeparturesBoardWithDetails2 DeparturesBoard)
+        public GetNextDeparturesWithDetailsResponse(LDB.DeparturesBoardWithDetails3 DeparturesBoard)
         {
             this.DeparturesBoard = DeparturesBoard;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetFastestDeparturesRequest", WrapperNamespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetFastestDeparturesRequest", WrapperNamespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", IsWrapped=true)]
     public partial class GetFastestDeparturesRequest
     {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://thalesgroup.com/RTTI/2013-11-28/Token/types")]
         public LDB.AccessToken AccessToken;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=0)]
         public string crs;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=1)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=1)]
         [System.Xml.Serialization.XmlArrayItemAttribute("crs", IsNullable=false)]
         public string[] filterList;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=2)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=2)]
         [System.ComponentModel.DefaultValueAttribute(0)]
         public int timeOffset;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=3)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=3)]
         [System.ComponentModel.DefaultValueAttribute(120)]
         public int timeWindow;
         
@@ -3632,47 +4891,47 @@ namespace LDB
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetFastestDeparturesResponse", WrapperNamespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetFastestDeparturesResponse", WrapperNamespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", IsWrapped=true)]
     public partial class GetFastestDeparturesResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=0)]
-        public LDB.DeparturesBoard2 DeparturesBoard;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=0)]
+        public LDB.DeparturesBoard3 DeparturesBoard;
         
         public GetFastestDeparturesResponse()
         {
         }
         
-        public GetFastestDeparturesResponse(LDB.DeparturesBoard2 DeparturesBoard)
+        public GetFastestDeparturesResponse(LDB.DeparturesBoard3 DeparturesBoard)
         {
             this.DeparturesBoard = DeparturesBoard;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetFastestDeparturesWithDetailsRequest", WrapperNamespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetFastestDeparturesWithDetailsRequest", WrapperNamespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", IsWrapped=true)]
     public partial class GetFastestDeparturesWithDetailsRequest
     {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://thalesgroup.com/RTTI/2013-11-28/Token/types")]
         public LDB.AccessToken AccessToken;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=0)]
         public string crs;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=1)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=1)]
         [System.Xml.Serialization.XmlArrayItemAttribute("crs", IsNullable=false)]
         public string[] filterList;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=2)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=2)]
         [System.ComponentModel.DefaultValueAttribute(0)]
         public int timeOffset;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=3)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=3)]
         [System.ComponentModel.DefaultValueAttribute(120)]
         public int timeWindow;
         
@@ -3691,32 +4950,32 @@ namespace LDB
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetFastestDeparturesWithDetailsResponse", WrapperNamespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", IsWrapped=true)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetFastestDeparturesWithDetailsResponse", WrapperNamespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", IsWrapped=true)]
     public partial class GetFastestDeparturesWithDetailsResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2017-10-01/ldb/", Order=0)]
-        public LDB.DeparturesBoardWithDetails2 DeparturesBoard;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://thalesgroup.com/RTTI/2021-11-01/ldb/", Order=0)]
+        public LDB.DeparturesBoardWithDetails3 DeparturesBoard;
         
         public GetFastestDeparturesWithDetailsResponse()
         {
         }
         
-        public GetFastestDeparturesWithDetailsResponse(LDB.DeparturesBoardWithDetails2 DeparturesBoard)
+        public GetFastestDeparturesWithDetailsResponse(LDB.DeparturesBoardWithDetails3 DeparturesBoard)
         {
             this.DeparturesBoard = DeparturesBoard;
         }
     }
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     public interface LDBServiceSoapChannel : LDB.LDBServiceSoap, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     public partial class LDBServiceSoapClient : System.ServiceModel.ClientBase<LDB.LDBServiceSoap>, LDB.LDBServiceSoap
     {
         
@@ -3759,7 +5018,7 @@ namespace LDB
             return base.Channel.GetDepartureBoard(request);
         }
         
-        public LDB.StationBoard2 GetDepartureBoard(LDB.AccessToken AccessToken, ushort numRows, string crs, string filterCrs, LDB.FilterType filterType, int timeOffset, int timeWindow)
+        public LDB.StationBoard3 GetDepartureBoard(LDB.AccessToken AccessToken, ushort numRows, string crs, string filterCrs, LDB.FilterType filterType, int timeOffset, int timeWindow)
         {
             LDB.GetDepartureBoardRequest inValue = new LDB.GetDepartureBoardRequest();
             inValue.AccessToken = AccessToken;
@@ -3798,7 +5057,7 @@ namespace LDB
             return base.Channel.GetArrivalBoard(request);
         }
         
-        public LDB.StationBoard2 GetArrivalBoard(LDB.AccessToken AccessToken, ushort numRows, string crs, string filterCrs, LDB.FilterType filterType, int timeOffset, int timeWindow)
+        public LDB.StationBoard3 GetArrivalBoard(LDB.AccessToken AccessToken, ushort numRows, string crs, string filterCrs, LDB.FilterType filterType, int timeOffset, int timeWindow)
         {
             LDB.GetArrivalBoardRequest inValue = new LDB.GetArrivalBoardRequest();
             inValue.AccessToken = AccessToken;
@@ -3837,7 +5096,7 @@ namespace LDB
             return base.Channel.GetArrivalDepartureBoard(request);
         }
         
-        public LDB.StationBoard2 GetArrivalDepartureBoard(LDB.AccessToken AccessToken, ushort numRows, string crs, string filterCrs, LDB.FilterType filterType, int timeOffset, int timeWindow)
+        public LDB.StationBoard3 GetArrivalDepartureBoard(LDB.AccessToken AccessToken, ushort numRows, string crs, string filterCrs, LDB.FilterType filterType, int timeOffset, int timeWindow)
         {
             LDB.GetArrivalDepartureBoardRequest inValue = new LDB.GetArrivalDepartureBoardRequest();
             inValue.AccessToken = AccessToken;
@@ -3876,7 +5135,7 @@ namespace LDB
             return base.Channel.GetServiceDetails(request);
         }
         
-        public LDB.ServiceDetails GetServiceDetails(LDB.AccessToken AccessToken, string serviceID)
+        public LDB.ServiceDetails1 GetServiceDetails(LDB.AccessToken AccessToken, string serviceID)
         {
             LDB.GetServiceDetailsRequest inValue = new LDB.GetServiceDetailsRequest();
             inValue.AccessToken = AccessToken;
@@ -3905,7 +5164,7 @@ namespace LDB
             return base.Channel.GetDepBoardWithDetails(request);
         }
         
-        public LDB.StationBoardWithDetails2 GetDepBoardWithDetails(LDB.AccessToken AccessToken, ushort numRows, string crs, string filterCrs, LDB.FilterType filterType, int timeOffset, int timeWindow)
+        public LDB.StationBoardWithDetails3 GetDepBoardWithDetails(LDB.AccessToken AccessToken, ushort numRows, string crs, string filterCrs, LDB.FilterType filterType, int timeOffset, int timeWindow)
         {
             LDB.GetDepBoardWithDetailsRequest inValue = new LDB.GetDepBoardWithDetailsRequest();
             inValue.AccessToken = AccessToken;
@@ -3944,7 +5203,7 @@ namespace LDB
             return base.Channel.GetArrBoardWithDetails(request);
         }
         
-        public LDB.StationBoardWithDetails2 GetArrBoardWithDetails(LDB.AccessToken AccessToken, ushort numRows, string crs, string filterCrs, LDB.FilterType filterType, int timeOffset, int timeWindow)
+        public LDB.StationBoardWithDetails3 GetArrBoardWithDetails(LDB.AccessToken AccessToken, ushort numRows, string crs, string filterCrs, LDB.FilterType filterType, int timeOffset, int timeWindow)
         {
             LDB.GetArrBoardWithDetailsRequest inValue = new LDB.GetArrBoardWithDetailsRequest();
             inValue.AccessToken = AccessToken;
@@ -3983,7 +5242,7 @@ namespace LDB
             return base.Channel.GetArrDepBoardWithDetails(request);
         }
         
-        public LDB.StationBoardWithDetails2 GetArrDepBoardWithDetails(LDB.AccessToken AccessToken, ushort numRows, string crs, string filterCrs, LDB.FilterType filterType, int timeOffset, int timeWindow)
+        public LDB.StationBoardWithDetails3 GetArrDepBoardWithDetails(LDB.AccessToken AccessToken, ushort numRows, string crs, string filterCrs, LDB.FilterType filterType, int timeOffset, int timeWindow)
         {
             LDB.GetArrDepBoardWithDetailsRequest inValue = new LDB.GetArrDepBoardWithDetailsRequest();
             inValue.AccessToken = AccessToken;
@@ -4022,7 +5281,7 @@ namespace LDB
             return base.Channel.GetNextDepartures(request);
         }
         
-        public LDB.DeparturesBoard2 GetNextDepartures(LDB.AccessToken AccessToken, string crs, string[] filterList, int timeOffset, int timeWindow)
+        public LDB.DeparturesBoard3 GetNextDepartures(LDB.AccessToken AccessToken, string crs, string[] filterList, int timeOffset, int timeWindow)
         {
             LDB.GetNextDeparturesRequest inValue = new LDB.GetNextDeparturesRequest();
             inValue.AccessToken = AccessToken;
@@ -4057,7 +5316,7 @@ namespace LDB
             return base.Channel.GetNextDeparturesWithDetails(request);
         }
         
-        public LDB.DeparturesBoardWithDetails2 GetNextDeparturesWithDetails(LDB.AccessToken AccessToken, string crs, string[] filterList, int timeOffset, int timeWindow)
+        public LDB.DeparturesBoardWithDetails3 GetNextDeparturesWithDetails(LDB.AccessToken AccessToken, string crs, string[] filterList, int timeOffset, int timeWindow)
         {
             LDB.GetNextDeparturesWithDetailsRequest inValue = new LDB.GetNextDeparturesWithDetailsRequest();
             inValue.AccessToken = AccessToken;
@@ -4092,7 +5351,7 @@ namespace LDB
             return base.Channel.GetFastestDepartures(request);
         }
         
-        public LDB.DeparturesBoard2 GetFastestDepartures(LDB.AccessToken AccessToken, string crs, string[] filterList, int timeOffset, int timeWindow)
+        public LDB.DeparturesBoard3 GetFastestDepartures(LDB.AccessToken AccessToken, string crs, string[] filterList, int timeOffset, int timeWindow)
         {
             LDB.GetFastestDeparturesRequest inValue = new LDB.GetFastestDeparturesRequest();
             inValue.AccessToken = AccessToken;
@@ -4127,7 +5386,7 @@ namespace LDB
             return base.Channel.GetFastestDeparturesWithDetails(request);
         }
         
-        public LDB.DeparturesBoardWithDetails2 GetFastestDeparturesWithDetails(LDB.AccessToken AccessToken, string crs, string[] filterList, int timeOffset, int timeWindow)
+        public LDB.DeparturesBoardWithDetails3 GetFastestDeparturesWithDetails(LDB.AccessToken AccessToken, string crs, string[] filterList, int timeOffset, int timeWindow)
         {
             LDB.GetFastestDeparturesWithDetailsRequest inValue = new LDB.GetFastestDeparturesWithDetailsRequest();
             inValue.AccessToken = AccessToken;
@@ -4159,11 +5418,6 @@ namespace LDB
         public virtual System.Threading.Tasks.Task OpenAsync()
         {
             return System.Threading.Tasks.Task.Factory.FromAsync(((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(null, null), new System.Action<System.IAsyncResult>(((System.ServiceModel.ICommunicationObject)(this)).EndOpen));
-        }
-        
-        public virtual System.Threading.Tasks.Task CloseAsync()
-        {
-            return System.Threading.Tasks.Task.Factory.FromAsync(((System.ServiceModel.ICommunicationObject)(this)).BeginClose(null, null), new System.Action<System.IAsyncResult>(((System.ServiceModel.ICommunicationObject)(this)).EndClose));
         }
         
         private static System.ServiceModel.Channels.Binding GetBindingForEndpoint(EndpointConfiguration endpointConfiguration)
@@ -4198,11 +5452,11 @@ namespace LDB
         {
             if ((endpointConfiguration == EndpointConfiguration.LDBServiceSoap))
             {
-                return new System.ServiceModel.EndpointAddress("https://lite.realtime.nationalrail.co.uk/OpenLDBWS/ldb11.asmx");
+                return new System.ServiceModel.EndpointAddress("https://lite.realtime.nationalrail.co.uk/OpenLDBWS/ldb12.asmx");
             }
             if ((endpointConfiguration == EndpointConfiguration.LDBServiceSoap12))
             {
-                return new System.ServiceModel.EndpointAddress("https://lite.realtime.nationalrail.co.uk/OpenLDBWS/ldb11.asmx");
+                return new System.ServiceModel.EndpointAddress("https://lite.realtime.nationalrail.co.uk/OpenLDBWS/ldb12.asmx");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
