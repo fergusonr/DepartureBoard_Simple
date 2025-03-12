@@ -7,11 +7,19 @@ using Microsoft.Extensions.Configuration;
 using System.ServiceModel.Channels;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 
-using Terminal.Gui;
-using ConfigurationManager = Terminal.Gui.ConfigurationManager;
+using Terminal.Gui.App;
+using Terminal.Gui.Configuration;
+using Terminal.Gui.Drawing;
+using Terminal.Gui.Input;
+using Terminal.Gui.Views;
+using Terminal.Gui.ViewBase;
+
+using ConfigurationManager = Terminal.Gui.Configuration.ConfigurationManager;
+
 using LDB;
+
+#pragma warning disable CS0618 // for now...
 
 namespace DepartureBoard
 {
@@ -22,7 +30,6 @@ namespace DepartureBoard
 
 		static Dictionary<string, string> _stationList = new Dictionary<string, string>();
 		static Window _mainWindow;
-		static MenuBar _menuBar;
 		static List<string> _rsids;
 		static ListView _displayBoard;
 		static ListView _displayDetails;
@@ -37,6 +44,8 @@ namespace DepartureBoard
 		{
 			Application.Init();
 			Application.AddTimeout(TimeSpan.FromMinutes(5), Refresh);
+
+			ConfigurationManager.Enable(ConfigLocations.All);
 
 #if !TEST
 			// token from command line?
@@ -65,39 +74,39 @@ namespace DepartureBoard
 			}
 
 			// menu bar
-			var themesMenu = new MenuItem[ConfigurationManager.Themes.Count];
+			var themesMenu = new MenuItem[ThemeManager.Themes.Count];
 
 			int i = 0;
-			foreach (var theme in ConfigurationManager.Themes.Keys)
+			foreach (var theme in ThemeManager.Themes.Keys.OrderBy(x => x))
 				themesMenu[i++] = new MenuItem(theme, "", () => SetColorScheme(theme));
 
-			_menuBar = new MenuBar()
+			var menuBar = new MenuBar()
 			{
-				Menus = new MenuBarItem[]
-			{
-				new MenuBarItem("_File", new MenuItem[]
-				{
+				Menus =
+			[
+				new MenuBarItem("_File",
+				[
 					new MenuItem("_New", "", New),
 					new MenuItem("_Quit", "", () => { if (Quit()) Application.Top.Running = false; })
-				}),
-				new MenuBarItem("_Options", new MenuItem[]
-				{
+				]),
+				new MenuBarItem("_Options",
+				[
 					new MenuItem("_Refresh", "", GetBoard),
-					new MenuBarItem("_Switch", new MenuItem[]
-					{
+					new MenuBarItem("_Switch",
+					[
 						_switchMenu = new MenuItem("#swap#", "", Switch),
 						_allDestinationMenu = new MenuItem("#alldest#", "", AllDestinations)
-					}),
+					]),
 					new MenuBarItem("_Theme", themesMenu)
-				}),
-				new MenuBarItem("_Help", new MenuItem[]
-				{
+				]),
+				new MenuBarItem("_Help",
+				[
 					new MenuItem("_About", "", About)
-				})
-			}};
+				])
+			]};
 
 			// main window
-			_mainWindow = new Window() { Title = "Departures",  X = 0,	Y = Pos.Bottom(_menuBar), Width = Dim.Fill(), Height = Dim.Fill(), BorderStyle = LineStyle.Single };
+			_mainWindow = new Window() { Title = "Departures",  X = 0,	Y = Pos.Bottom(menuBar), Width = Dim.Fill(), Height = Dim.Fill(), BorderStyle = LineStyle.Single };
 			_mainWindow.KeyDown += (object sender, Key e) =>
 			{
 				if (e.KeyCode == Key.F5)
@@ -105,7 +114,7 @@ namespace DepartureBoard
 			};
 
 			var top = new Toplevel();
-			top.Add(_menuBar, _mainWindow);
+			top.Add(menuBar, _mainWindow);
 
 			// Main board
 			_displayBoard = new ListView() { X = 0, Y = 0, Width = Dim.Fill(), Height = Dim.Percent(50) };
@@ -205,7 +214,7 @@ namespace DepartureBoard
 			var ok = new Button() { Text = "Ok", IsDefault = true };
 			ok.Selecting += (object sender, CommandEventArgs e) => Application.RequestStop();
 
-			var about = new Dialog() { Title = "About", Width = 36, Height = 8, BorderStyle = LineStyle.Single };
+			var about = new Dialog() { Title = "About", Width = 36, Height = 9, BorderStyle = LineStyle.Single };
 			about.AddButton(ok);
 
 			about.Add(
@@ -219,7 +228,7 @@ namespace DepartureBoard
 
 		static bool Quit()
 		{
-			return MessageBox.Query(50, 7, "Quit?", "Are you sure you want to quit?", 0, "Yes", "No") == -1;
+			return MessageBox.Query(50, 7, "Quit?", "Are you sure you want to quit?", 0, "Yes", "No") == 0;
 		}
 
 		static bool Refresh()
@@ -230,7 +239,7 @@ namespace DepartureBoard
 
 		static void SetColorScheme(string name)
 		{
-			ConfigurationManager.Themes.Theme = name;
+			ThemeManager.Theme = name;
 			ConfigurationManager.Apply();
 
 			_mainWindow.SetNeedsDraw();

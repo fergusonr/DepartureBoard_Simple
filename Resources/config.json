@@ -1,10 +1,10 @@
 ﻿{
-  "Themes": [
+  "Themes_DISABLED": [
     {
       "Black/Green": {
-        "ColorSchemes": [
+        "Schemes": [
           {
-            "Base": {
+            "Toplevel": {
               "Normal": {
                 "Foreground": "BrightGreen",
                 "Background": "Black"
@@ -33,9 +33,9 @@
     },
     {
       "Black/Yellow": {
-        "ColorSchemes": [
+        "Schemes": [
           {
-            "Base": {
+            "Toplevel": {
               "Normal": {
                 "Foreground": "BrightYellow",
                 "Background": "Black"
