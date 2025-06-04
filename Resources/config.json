@@ -1,10 +1,10 @@
 ﻿{
-  "Themes_DISABLED": [
+  "Themes": [
     {
       "Black/Green": {
         "Schemes": [
           {
-            "Toplevel": {
+            "Base": {
               "Normal": {
                 "Foreground": "BrightGreen",
                 "Background": "Black"
@@ -27,36 +27,21 @@
                 "Background": "Black"
               }
             }
-          }
-        ]
-      }
-    },
-    {
-      "Black/Yellow": {
-        "Schemes": [
+          },
           {
-            "Toplevel": {
-              "Normal": {
-                "Foreground": "BrightYellow",
-                "Background": "Black"
-              },
-              "Focus": {
-                "Foreground": "White",
-                "Background": "Cyan"
-
-              },
-              "HotNormal": {
-                "Foreground": "Yellow",
-                "Background": "Black"
-              },
-              "HotFocus": {
-                "Foreground": "Blue",
-                "Background": "Cyan"
-              },
-              "Disabled": {
-                "Foreground": "DarkGray",
-                "Background": "Black"
-              }
+            "TopLevel": {
+            }
+          },
+          {
+            "Dialog": {
+            }
+          },
+          {
+            "Menu": {
+            }
+          },
+          {
+            "Error": {
             }
           }
         ]
