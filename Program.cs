@@ -19,8 +19,6 @@ using ConfigurationManager = Terminal.Gui.Configuration.ConfigurationManager;
 
 using LDB;
 
-#pragma warning disable CS0618 // for now...
-
 namespace DepartureBoard
 {
 	static class Program
@@ -37,8 +35,8 @@ namespace DepartureBoard
 		static string _fromStationCode;
 		static string _toStationCode;
 		const string _allDestinations = "all destinations";
-		static MenuItem _switchMenu;
-		static MenuItem _allDestinationMenu;
+		static MenuItemv2 _switchMenu;
+		static MenuItemv2 _allDestinationMenu;
 
 		static void Main(string[] args)
 		{
@@ -74,34 +72,35 @@ namespace DepartureBoard
 			}
 
 			// menu bar
-			var themesMenu = new MenuItem[ThemeManager.Themes.Count];
+			var themesMenu = new MenuItemv2[ThemeManager.Themes.Count];
 
 			int i = 0;
 			foreach (var theme in ThemeManager.Themes.Keys.OrderBy(x => x))
-				themesMenu[i++] = new MenuItem(theme, "", () => SetColorScheme(theme));
+				themesMenu[i++] = new MenuItemv2(theme, action: () => SetColorScheme(theme));
 
-			var menuBar = new MenuBar()
+			var menuBar = new MenuBarv2()
 			{
 				Menus =
 			[
-				new MenuBarItem("_File",
+				new MenuBarItemv2("_File",
 				[
-					new MenuItem("_New", "", New),
-					new MenuItem("_Quit", "", () => { if (Quit()) Application.Top.Running = false; })
+					new MenuItemv2("_New", action: New),
+					new MenuItemv2("_Quit", action: () => { if (Quit()) Application.Top.Running = false; })
 				]),
-				new MenuBarItem("_Options",
+				new MenuBarItemv2("_Options",
 				[
-					new MenuItem("_Refresh", "", GetBoard),
-					new MenuBarItem("_Switch",
-					[
-						_switchMenu = new MenuItem("#swap#", "", Switch),
-						_allDestinationMenu = new MenuItem("#alldest#", "", AllDestinations)
-					]),
-					new MenuBarItem("_Theme", themesMenu)
+					new MenuItemv2("_Refresh", action : GetBoard),
+					new MenuItemv2("_Switch", subMenu:
+						new Menuv2(
+						[
+							_switchMenu = new MenuItemv2("#swap#", "", Switch),
+							_allDestinationMenu = new MenuItemv2("#alldest#", "", AllDestinations)
+						])),
+					new MenuItemv2("_Theme", subMenu: new Menuv2 (themesMenu))
 				]),
-				new MenuBarItem("_Help",
+				new MenuBarItemv2("_Help",
 				[
-					new MenuItem("_About", "", About)
+					new MenuItemv2("_About", action : About)
 				])
 			]};
 
@@ -188,7 +187,7 @@ namespace DepartureBoard
 			if (selected == all)
 				return null;
 
-			if (selected == null) // dialog cancelled
+			if (string.IsNullOrEmpty(selected)) // dialog cancelled
 				return string.Empty;
 
 			return _stationList[selected];
@@ -295,10 +294,8 @@ namespace DepartureBoard
 			_switchMenu.Title = $"{board.filterLocationName ?? _allDestinations} -> {board.locationName}";
 			_allDestinationMenu.Title = $"{board.locationName} -> {_allDestinations}";
 
-			bool switchMenuEnabled() { return board.filterLocationName != null; }
-
-			_switchMenu.CanExecute = switchMenuEnabled;
-			_allDestinationMenu.CanExecute = switchMenuEnabled;
+			_switchMenu.Enabled = board.filterLocationName != null;
+			_allDestinationMenu.Enabled = board.filterLocationName != null;
 
 			if (board.trainServices == null)
 				return;
