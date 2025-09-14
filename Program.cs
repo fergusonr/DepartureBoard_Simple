@@ -27,6 +27,8 @@ namespace DepartureBoard
 		static readonly AccessToken _token = new AccessToken();
 
 		static Dictionary<string, string> _stationList = new Dictionary<string, string>();
+
+		static IApplication _app;
 		static Window _mainWindow;
 		static List<string> _rsids;
 		static ListView _displayBoard;
@@ -35,15 +37,16 @@ namespace DepartureBoard
 		static string _fromStationCode;
 		static string _toStationCode;
 		const string _allDestinations = "all destinations";
-		static MenuItemv2 _switchMenu;
-		static MenuItemv2 _allDestinationMenu;
+		static MenuItem _switchMenu;
+		static MenuItem _allDestinationMenu;
 
 		static void Main(string[] args)
 		{
-			Application.Init();
-			Application.AddTimeout(TimeSpan.FromMinutes(5), Refresh);
-
 			ConfigurationManager.Enable(ConfigLocations.All);
+
+			_app = Application.Create().Init();
+
+			_app.AddTimeout(TimeSpan.FromMinutes(5), Refresh);
 
 #if !TEST
 			// token from command line?
@@ -55,8 +58,7 @@ namespace DepartureBoard
 
 			if (!Guid.TryParse(_token.TokenValue, out Guid dummy))
 			{
-				MessageBox.ErrorQuery(80, 7, "Error", $"Invalid token:- {_token.TokenValue}", 0, "Quit");
-				Application.Shutdown();
+				MessageBox.ErrorQuery(_app, 80, 7, "Error", $"Invalid token:- {_token.TokenValue}", 0, "Quit");
 				return;
 			}
 #endif
@@ -72,35 +74,35 @@ namespace DepartureBoard
 			}
 
 			// menu bar
-			var themesMenu = new MenuItemv2[ThemeManager.Themes.Count];
+			var themesMenu = new MenuItem[ThemeManager.Themes.Count];
 
 			int i = 0;
 			foreach (var theme in ThemeManager.Themes.Keys.OrderBy(x => x))
-				themesMenu[i++] = new MenuItemv2(theme, action: () => SetColorScheme(theme));
+				themesMenu[i++] = new MenuItem(theme, action: () => SetColorScheme(theme));
 
-			var menuBar = new MenuBarv2()
+			var menuBar = new MenuBar()
 			{
 				Menus =
 			[
-				new MenuBarItemv2("_File",
+				new MenuBarItem("_File",
 				[
-					new MenuItemv2("_New", action: New),
-					new MenuItemv2("_Quit", action: () => { if (Quit()) Application.Top.Running = false; })
+					new MenuItem("_New", action: New),
+					new MenuItem("_Quit", action: () => { if (Quit()) _app.RequestStop(); })
 				]),
-				new MenuBarItemv2("_Options",
+				new MenuBarItem("_Options",
 				[
-					new MenuItemv2("_Refresh", action : GetBoard),
-					new MenuItemv2("_Switch", subMenu:
-						new Menuv2(
+					new MenuItem("_Refresh", action : GetBoard),
+					new MenuItem("_Switch", subMenu:
+						new Menu(
 						[
-							_switchMenu = new MenuItemv2("#swap#", "", Switch),
-							_allDestinationMenu = new MenuItemv2("#alldest#", "", AllDestinations)
+							_switchMenu = new MenuItem("#swap#", "", Switch),
+							_allDestinationMenu = new MenuItem("#alldest#", "", AllDestinations)
 						])),
-					new MenuItemv2("_Theme", subMenu: new Menuv2 (themesMenu))
+					new MenuItem("_Theme", subMenu: new Menu (themesMenu))
 				]),
-				new MenuBarItemv2("_Help",
+				new MenuBarItem("_Help",
 				[
-					new MenuItemv2("_About", action : About)
+					new MenuItem("_About", action : About)
 				])
 			]};
 
@@ -112,7 +114,7 @@ namespace DepartureBoard
 					GetBoard();
 			};
 
-			var top = new Toplevel();
+			var top = new Window();
 			top.Add(menuBar, _mainWindow);
 
 			// Main board
@@ -138,17 +140,17 @@ namespace DepartureBoard
 				_toStationCode = args[1] == "ALL" ? null : args[1];
 
 				if(!_stationList.ContainsValue(_fromStationCode))
-					MessageBox.ErrorQuery(80, 7, "Error", $"Invalid 'from' station code:- {_fromStationCode}", 0, "Continue");
+					MessageBox.ErrorQuery(_app, 80, 7, "Error", $"Invalid 'from' station code:- {_fromStationCode}", 0, "Continue");
 				else if(!_stationList.ContainsValue(_toStationCode) && _toStationCode != null)
-					MessageBox.ErrorQuery(80, 7, "Error", $"Invalid 'to' station code:- {_toStationCode}", 0, "Continue");
+					MessageBox.ErrorQuery(_app, 80, 7, "Error", $"Invalid 'to' station code:- {_toStationCode}", 0, "Continue");
 				else
-					Application.Invoke(GetBoard);
+					_app.Invoke(GetBoard);
 			}
 			else
-				Application.Invoke(New);
+				_app.Invoke(New);
 
-			Application.Run(top);
-			Application.Shutdown();
+			_app.Run(top);
+			_app.Dispose();
 		}
 
 		static void New()
@@ -177,12 +179,12 @@ namespace DepartureBoard
 			stationSearch.OpenSelectedItem += (object sender, ListViewItemEventArgs e) =>
 			{
 				selected = e.Value.ToString();
-				Application.RequestStop();
+				_app.RequestStop();
 			};
 
 			var dialog = new Dialog() { Title = title, Width = Dim.Percent(40), Height = Dim.Percent(50) };
 			dialog.Add(stationSearch);
-			Application.Run(dialog);
+			_app.Run(dialog);
 
 			if (selected == all)
 				return null;
@@ -211,7 +213,7 @@ namespace DepartureBoard
 		static void About()
 		{
 			var ok = new Button() { Text = "Ok", IsDefault = true };
-			ok.Selecting += (object sender, CommandEventArgs e) => Application.RequestStop();
+			ok.Accepting += (object sender, CommandEventArgs e) => _app.RequestStop();
 
 			var about = new Dialog() { Title = "About", Width = 36, Height = 9, BorderStyle = LineStyle.Single };
 			about.AddButton(ok);
@@ -222,12 +224,12 @@ namespace DepartureBoard
 				new Label() { Text = $"DotNet {Environment.Version}",										  Width = Dim.Fill(), Y = 3, TextAlignment = Alignment.Center }
 			);
 
-			Application.Run(about);
+			_app.Run(about);
 		}
 
 		static bool Quit()
 		{
-			return MessageBox.Query(50, 7, "Quit?", "Are you sure you want to quit?", 0, "Yes", "No") == 0;
+			return MessageBox.Query(_app, 50, 7, "Quit?", "Are you sure you want to quit?", 0, "Yes", "No") == 0;
 		}
 
 		static bool Refresh()
@@ -284,7 +286,7 @@ namespace DepartureBoard
 			}
 			catch (Exception e)
 			{
-				MessageBox.ErrorQuery(78, 10, "Error", e.Message, 0, "Continue");
+				MessageBox.ErrorQuery(_app, 78, 10, "Error", e.Message, 0, "Continue");
 				return;
 			}
 
@@ -316,7 +318,7 @@ namespace DepartureBoard
 			if (_rsids == null || _rsids.Count == 0) // fired before GetBoard called
 				return;
 
-			var serviceId = _rsids[_displayBoard.SelectedItem];
+			var serviceId = _rsids[(int)_displayBoard.SelectedItem];
 
 			if (serviceId == null)
 				return;
